@@ -1,0 +1,69 @@
+.table-view {
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: #dddddd;
+    -fx-border-radius: 8px; /* Rounded corners */
+    -fx-padding: 10px;
+    -fx-background-insets: 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 10, 0.5, 0, 2); /* Subtle shadow effect */
+}
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to bottom, #4CAF50, #388E3C);
+    -fx-border-radius: 8px 8px 0 0; /* Rounded corners for header */
+}
+
+.table-view .column-header, .table-view .column-header .label {
+    -fx-text-fill: black; /* White text color for headers */
+    -fx-font-weight: bold; /* Bold font for header text */
+    -fx-font-size: 18px;
+    -fx-alignment: CENTER; /* Center align the header text */
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: white; /* Default row background color */
+    -fx-border-color: transparent; /* Remove cell borders */
+    -fx-padding: 8px;
+    -fx-background-insets: 0, 0 0 1 0;
+}
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: #f1f8e9; /* Light green background when hovering over a row */
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: #f9f9f9; /* Slightly different color for alternate rows */
+}
+
+.table-view .table-cell {
+    -fx-padding: 8px;
+    -fx-font-size: 13px; /* Slightly smaller text size for cells */
+    -fx-text-fill: #333333; /* Darker text color for better readability */
+    -fx-alignment: CENTER_LEFT; /* Align cell text to the left */
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #66BB6A; /* Green background color for selected row */
+    -fx-text-fill: white; /* White text color for selected row */
+}
+
+.table-view .table-row-cell:focused {
+    -fx-background-color: #66BB6A; /* Green background when the row is focused */
+    -fx-text-fill: white;
+}
+
+.table-view .scroll-bar {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+}
+
+.table-view .scroll-bar:vertical .thumb {
+    -fx-background-color: #388E3C; /* Green scroll thumb for vertical scrollbar */
+    -fx-background-insets: 2;
+    -fx-background-radius: 4px;
+}
+
+.table-view .scroll-bar:horizontal .thumb {
+    -fx-background-color: #388E3C; /* Green scroll thumb for horizontal scrollbar */
+    -fx-background-insets: 2;
+    -fx-background-radius: 4px;
+}

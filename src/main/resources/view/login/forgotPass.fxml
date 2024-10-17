@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="503.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evergreen.zoo.controller.ForgotPassController">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../asserts/gif/bg.gif" />
+         </image>
+      </ImageView>
+      <Pane id="paneForm" layoutX="41.0" layoutY="54.0" prefHeight="380.0" prefWidth="376.0" stylesheets="@../../asserts/style/style.css">
+         <children>
+            <JFXTextField id="text" fx:id="usernameTxt" labelFloat="true" layoutX="68.0" layoutY="78.0" prefHeight="31.0" prefWidth="165.0" promptText="enter username" stylesheets="@../../asserts/style/style.css">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXTextField>
+            <TextField fx:id="phoneNumber" editable="false" layoutX="68.0" layoutY="141.0" prefHeight="25.0" prefWidth="165.0" text="Phone">
+               <font>
+                  <Font size="15.0" />
+               </font></TextField>
+            <TextField fx:id="emailTxt" editable="false" layoutX="68.0" layoutY="190.0" prefHeight="25.0" prefWidth="165.0" text="Email">
+               <font>
+                  <Font size="15.0" />
+               </font></TextField>
+            <JFXTextField id="text" fx:id="otpTxt" disable="true" labelFloat="true" layoutX="68.0" layoutY="238.0" prefHeight="31.0" prefWidth="165.0" promptText="Enter OTP" stylesheets="@../../asserts/style/style.css">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXTextField>
+            <JFXButton fx:id="restPassBtn" disable="true" layoutX="96.0" layoutY="303.0" onAction="#rextPass" style="-fx-background-color: #B8B098;" text="Rest Password">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXButton>
+            <JFXButton fx:id="getUserDataBtn" layoutX="250.0" layoutY="80.0" onAction="#getUserData" style="-fx-background-color: #B8B098;" text="Get User Data">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXButton>
+            <JFXButton fx:id="getOtpBtnNum" disable="true" layoutX="265.0" layoutY="139.0" onAction="#getOtpSMS" style="-fx-border-radius: 20; -fx-background-color: #B8B098;" text="Get OTP">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXButton>
+            <JFXButton fx:id="getOtpBtnMail" disable="true" layoutX="265.0" layoutY="188.0" onAction="#getOtpEmail" style="-fx-background-color: #B8B098;" text="Get OTP">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXButton>
+            <Label fx:id="errorMsg" alignment="CENTER" layoutX="66.0" layoutY="346.0" prefHeight="17.0" prefWidth="243.0" textFill="RED" />
+            <JFXTextField id="text" fx:id="newPassTxt1" labelFloat="true" layoutX="100.0" layoutY="120.0" prefHeight="31.0" prefWidth="165.0" promptText="Enter new password" stylesheets="@../../asserts/style/style.css" visible="false">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXTextField>
+            <JFXTextField id="text" fx:id="newPassTxt2" labelFloat="true" layoutX="100.0" layoutY="170.0" prefHeight="31.0" prefWidth="165.0" promptText="confirm password" stylesheets="@../../asserts/style/style.css" visible="false">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXTextField>
+            <JFXButton fx:id="restPassBtn1" layoutX="142.0" layoutY="240.0" onAction="#rextPassFromDB" prefHeight="27.0" prefWidth="92.0" style="-fx-background-color: #B8B098;" text="Rest Password" visible="false">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXButton>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="1080.0" prefWidth="1920.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23" fx:controller="com.">
+    <!-- Sidebar -->
+    <left>
+        <VBox alignment="TOP_LEFT" spacing="10" style="-fx-background-color: #2E3440; -fx-padding: 15;">
+            <Label style="-fx-font-size: 20; -fx-text-fill: white;" text="ZooManager Pro" />
+            <Button style="-fx-background-color: transparent; -fx-text-fill: #D8DEE9;" text="Dashboard" />
+            <Button style="-fx-background-color: transparent; -fx-text-fill: #D8DEE9;" text="Staff" />
+            <Button style="-fx-background-color: transparent; -fx-text-fill: #D8DEE9;" text="Animals" />
+            <Button style="-fx-background-color: transparent; -fx-text-fill: #D8DEE9;" text="Reports" />
+            <Button style="-fx-background-color: transparent; -fx-text-fill: #D8DEE9;" text="Settings" />
+        </VBox>
+    </left>
+
+    <!-- Main content -->
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="10" style="-fx-padding: 15;">
+            <HBox alignment="CENTER" spacing="20">
+                <Label style="-fx-font-size: 24; -fx-font-weight: bold;" text="Dashboard Overview" />
+                <HBox alignment="CENTER_RIGHT" spacing="10">
+                    <Button text="Notifications" />
+                    <Label text="Time" />
+                </HBox>
+            </HBox>
+
+            <GridPane hgap="10" prefHeight="392.0" prefWidth="1710.0" vgap="10">
+                <children>
+                    <VBox prefHeight="177.0" prefWidth="250.0" style="-fx-background-color: #E0F7FA; -fx-padding: 15;" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <Label style="-fx-font-size: 16; -fx-text-fill: #00796B;" text="Total Animals" />
+                        <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #004D40;" text="1,234" />
+                    </VBox>
+                    <VBox prefHeight="106.0" prefWidth="254.0" style="-fx-background-color: #E8F5E9; -fx-padding: 15;" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <Label style="-fx-font-size: 16; -fx-text-fill: #388E3C;" text="Staff Members" />
+                        <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #1B5E20;" text="89" />
+                    </VBox>
+                    <VBox prefHeight="106.0" prefWidth="254.0" style="-fx-background-color: #F3E5F5; -fx-padding: 15;" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                        <Label style="-fx-font-size: 16; -fx-text-fill: #7B1FA2;" text="Daily Visitors" />
+                        <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #4A148C;" text="2,500" />
+                    </VBox>
+                    <VBox prefHeight="173.0" prefWidth="236.0" style="-fx-background-color: #FFF9C4; -fx-padding: 15;" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <Label style="-fx-font-size: 16; -fx-text-fill: #FBC02D;" text="Species Count" />
+                        <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #F57F17;" text="156" />
+                    </VBox>
+                    <VBox style="-fx-background-color: #FFEBEE; -fx-padding: 15;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label style="-fx-font-size: 16; -fx-text-fill: #E53935;" text="Today's Events" />
+                        <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #B71C1C;" text="5" />
+                    </VBox>
+                    <VBox prefHeight="90.0" prefWidth="202.0" style="-fx-background-color: #E0F2F1; -fx-padding: 15;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <Label style="-fx-font-size: 16; -fx-text-fill: #00897B;" text="Conservation Projects" />
+                        <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #004D40;" text="12" />
+                    </VBox>
+                </children>
+            <columnConstraints>
+               <ColumnConstraints />
+               <ColumnConstraints />
+               <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
+            </GridPane>
+         <Button mnemonicParsing="false" text="Button" />
+         <ColorPicker />
+         <ComboBox prefWidth="150.0" />
+         <ColorPicker />
+        </VBox>
+    </center>
+</BorderPane>

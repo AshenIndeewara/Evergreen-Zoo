@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="972.0" prefWidth="1587.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evergreen.zoo.controller.StaffController">
+   <children>
+      <GridPane hgap="10.0" layoutX="159.0" layoutY="38.0" prefHeight="93.0" prefWidth="534.0" vgap="10.0" AnchorPane.bottomAnchor="841.0" AnchorPane.leftAnchor="159.0" AnchorPane.rightAnchor="894.0" AnchorPane.topAnchor="38.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="381.0" minWidth="10.0" prefWidth="356.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="174.0" minWidth="10.0" prefWidth="78.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <JFXButton fx:id="searchBtnClicked" prefHeight="54.0" prefWidth="277.0" style="-fx-background-radius: 20; -fx-background-color: #ffffff; -fx-border-color: #f1f1f3;" text="Search" GridPane.columnIndex="1">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../asserts/icon/search.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </JFXButton>
+            <TextField fx:id="searchBox" prefHeight="34.0" prefWidth="260.0" promptText="Search staff ...">
+               <font>
+                  <Font size="25.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </GridPane.margin>
+            </TextField>
+         </children>
+      </GridPane>
+      <JFXButton layoutX="1228.0" layoutY="57.0" onAction="#addStaffClick" prefHeight="54.0" prefWidth="277.0" style="-fx-background-radius: 20; -fx-background-color: #18181b; -fx-border-color: #f1f1f3;" text="  Add New Staff" textFill="WHITE" AnchorPane.bottomAnchor="861.0" AnchorPane.leftAnchor="1217.0" AnchorPane.rightAnchor="93.0" AnchorPane.topAnchor="57.0">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../asserts/icon/plus.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="25.0" />
+         </font>
+      </JFXButton>
+      <AnchorPane layoutX="55.0" layoutY="166.0" prefHeight="710.0" prefWidth="1436.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="96.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="166.0">
+         <children>
+            <TableView fx:id="staffTable" layoutX="30.0" layoutY="16.0" prefHeight="593.0" prefWidth="1265.0" stylesheets="@../../asserts/style/table.css" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="100.0">
+              <columns>
+                <TableColumn fx:id="namCol" prefWidth="457.0" text="Name" />
+                <TableColumn fx:id="roleCol" prefWidth="188.0" text="Role" />
+                  <TableColumn fx:id="depCol" prefWidth="248.33331298828125" text="Department" />
+                  <TableColumn fx:id="cntactNumber" prefWidth="194.66668701171875" text="Contact Number" />
+                  <TableColumn fx:id="actionCol" prefWidth="309.333251953125" text="Actions" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,26 @@
+#bar{
+    -fx-background-color: #1e293c;
+}
+
+#paneForm {
+    -fx-background-color: #1e293c;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 10, 0.5, 5, 5);
+}
+
+#paneForm > * {
+    -fx-effect: none;
+}
+
+#text {
+    -fx-prompt-text-fill: #8e8a8a;
+    -fx-text-fill: #ffffff;
+}
+
+#box{
+    -fx-prompt-text-fill: #8e8a8a;
+    -fx-font-size: 15;
+}
+.combo-box .list-cell:filled:selected .text,
+.choice-box .list-cell:filled:selected .text {
+    -fx-fill: #ffffff;
+}
