@@ -9,7 +9,6 @@ public class SendSMS {
     public static void sendsms(String phoneNumber, int message) {
         try {
             // URL of the web resource
-            System.out.println(System.getenv("smsAPI")+"+94762400663&message=paco "+message);
             URL url = new URL(System.getenv("smsApi")+phoneNumber+"&message=Hello! Your secure verification code is  "+message);
 
             // Open connection

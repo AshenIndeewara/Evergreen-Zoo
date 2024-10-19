@@ -19,13 +19,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.evergreen.zoo.notification.ShowNotification;
 import org.mindrot.jbcrypt.BCrypt;
-
-import javax.swing.plaf.IconUIResource;
 
 public class LoginPaneController implements Initializable {
     private LoginModel loginModel = new LoginModel();
@@ -91,6 +88,7 @@ public class LoginPaneController implements Initializable {
                     "he he login notification eka click kala"
             ).start();
         } else {
+            closeWindow(event);
             new ShowNotification("Login successfully!",
                     "Hello " + resultSet.getString(1) + " welcome back",
                     "success.png",
@@ -111,9 +109,12 @@ public class LoginPaneController implements Initializable {
 
     @FXML
     void forgotPass(ActionEvent event) throws IOException {
-        closeWindow(event);
+        //closeWindow(event);
         //new ShowNotification().start();
-        loadWindow("login/forgotPass.fxml", false);
+        //loadWindow("login/forgotPass.fxml", false);
+        mainPane.getChildren().clear();
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/login/forgotPass.fxml"));
+        mainPane.getChildren().add(pane);
     }
 
 
