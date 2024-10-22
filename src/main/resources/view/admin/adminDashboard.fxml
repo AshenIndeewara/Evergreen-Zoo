@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evergreen.zoo.controller.DdminDashboardController">
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evergreen.zoo.controller.AdminDashboardController">
    <children>
       <Label fx:id="timeLabel" layoutX="1695.0" layoutY="57.0" prefHeight="37.0" prefWidth="201.0" text="TIME" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="57.0">
          <font>
