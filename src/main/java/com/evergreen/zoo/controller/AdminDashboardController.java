@@ -62,6 +62,7 @@ public class AdminDashboardController implements Initializable {
         setDate();
         setTime();
     }
+
     private void setDate() {
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.seconds(1), event -> {

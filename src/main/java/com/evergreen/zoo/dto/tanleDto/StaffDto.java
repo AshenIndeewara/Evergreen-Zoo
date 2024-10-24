@@ -10,7 +10,7 @@ import lombok.*;
 
 public class StaffDto {
     private String staffName;
-    private int staffRole;
+    private String staffRole;
     private String staffContact;
-    private String staffEMail;
+    private String staffEmail;
 }

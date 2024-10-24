@@ -5,12 +5,13 @@ import java.net.URL;
 import com.evergreen.zoo.dto.RegisterDto;
 import com.evergreen.zoo.model.RegisterModel;
 import com.evergreen.zoo.notification.ShowNotification;
+import com.evergreen.zoo.otpSend.SendEmail;
+import com.evergreen.zoo.util.UserIDQrEncryption;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -61,6 +62,7 @@ public class RegisterPaneController implements Initializable {
     private JFXTextField userName;
 
     RegisterModel registerModel = new RegisterModel();
+    QrController qrController = new QrController();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -72,7 +74,7 @@ public class RegisterPaneController implements Initializable {
     }
 
     @FXML
-    void checkRegistor(ActionEvent event) throws SQLException {
+    void checkRegistor(ActionEvent event) throws Exception {
         String fullName = this.fullName.getText();
         String phoneNumber = this.phoneNumber.getText();
         String password2 = this.password2.getText();
@@ -81,7 +83,7 @@ public class RegisterPaneController implements Initializable {
         String email = this.email.getText();
         String userName = this.userName.getText();
         String position = role.getValue();
-
+        int roleId = registerModel.getRoleIdByDescription(position);
         //TODO : add regex check password, encrypt password
         RegisterDto registerDto = new RegisterDto(
                 userName,
@@ -90,10 +92,13 @@ public class RegisterPaneController implements Initializable {
                 email,
                 phoneNumber,
                 address,
-                registerModel.getRoleIdByDescription(position)
+                roleId
         );
 
         if(registerModel.registorUser(registerDto)){
+            System.out.println("register success");
+            System.out.println("QR sending to email");
+            SendEmail.sendQr(email, qrController.getQrAPI(UserIDQrEncryption.encrypt(String.valueOf(roleId))));
             new ShowNotification("Login successfully!",
                     "Hello "+userName+" register",
                     "success.png",

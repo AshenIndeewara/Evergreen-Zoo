@@ -15,11 +15,10 @@ public class StaffModel {
         while (rs.next()) {
             StaffDto newStaff = new StaffDto(
                     rs.getString("name"),
-                    rs.getInt("position"),
+                    (String) rs.getObject("position"),
                     rs.getString("phone"),
                     rs.getString("email")
             );
-            System.out.println(newStaff.toString());
             staff.add(newStaff);
         }
         return staff;

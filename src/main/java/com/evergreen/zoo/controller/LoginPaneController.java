@@ -1,6 +1,11 @@
 package com.evergreen.zoo.controller;
 import com.evergreen.zoo.dto.LoginDto;
 import com.evergreen.zoo.model.LoginModel;
+import com.evergreen.zoo.util.UserIDQrEncryption;
+import com.github.sarxos.webcam.Webcam;
+import com.github.sarxos.webcam.WebcamPanel;
+import com.github.sarxos.webcam.WebcamResolution;
+import com.github.sarxos.webcam.util.ImageUtils;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -16,6 +21,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -23,6 +30,9 @@ import java.util.ResourceBundle;
 
 import com.evergreen.zoo.notification.ShowNotification;
 import org.mindrot.jbcrypt.BCrypt;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
 
 public class LoginPaneController implements Initializable {
     private LoginModel loginModel = new LoginModel();
@@ -65,6 +75,7 @@ public class LoginPaneController implements Initializable {
         Parent root = loader.load();
         Stage windows = new Stage();
         if(b){
+            windows.initOwner(mainPane.getScene().getWindow());
             windows.setFullScreen(true);
             windows.setResizable(false);
 
@@ -95,23 +106,36 @@ public class LoginPaneController implements Initializable {
                     "he he login notification eka click kala"
             ).start();
 
-            if (resultSet.getInt(4)==1) {
-                loadWindow("admin/adminDashboard.fxml", true);
-            } else if (resultSet.getInt(4)==2) {
-                //TODO : make dashboards
-            } else if (resultSet.getInt(4)==3) {
-                //TODO : make dashboards
-            } else if (resultSet.getInt(4)==4) {
-                //TODO : make dashboards
-            }
+            loadDashboards(resultSet.getInt(4), event);
+//            if (resultSet.getInt(4)==1) {
+//                loadWindow("admin/adminDashboard.fxml", true);
+//            } else if (resultSet.getInt(4)==2) {
+//                //TODO : make dashboards
+//            } else if (resultSet.getInt(4)==3) {
+//                //TODO : make dashboards
+//            } else if (resultSet.getInt(4)==4) {
+//                //TODO : make dashboards
+//            }
+        }
+    }
+
+    void loadDashboards(int role, ActionEvent event) throws IOException {
+        closeWindow(event);
+        if (role == 1) {
+            loadWindow("admin/adminDashboard.fxml", true);
+        } else if (role == 2) {
+            //TODO : make dashboards
+        } else if (role == 3) {
+            //TODO : make dashboards
+        } else if (role == 4) {
+            //TODO : make dashboards
+        }else{
+            System.out.println("Invalid role");
         }
     }
 
     @FXML
     void forgotPass(ActionEvent event) throws IOException {
-        //closeWindow(event);
-        //new ShowNotification().start();
-        //loadWindow("login/forgotPass.fxml", false);
         mainPane.getChildren().clear();
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/login/forgotPass.fxml"));
         mainPane.getChildren().add(pane);
@@ -123,6 +147,47 @@ public class LoginPaneController implements Initializable {
         mainPane.getChildren().clear();
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/register/registerPane.fxml"));
         mainPane.getChildren().add(pane);
+    }
+
+    @FXML
+    void qrScan(ActionEvent event) throws Exception {
+        Webcam webcam = Webcam.getDefault();
+        webcam.setViewSize(WebcamResolution.VGA.getSize());
+
+        WebcamPanel panel = new WebcamPanel(webcam);
+        panel.setImageSizeDisplayed(true);
+
+        webcam.open();
+
+        JFrame window = new JFrame("QR Code Scanner");
+        window.add(panel);
+        window.setResizable(true);
+        window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        window.pack();
+        window.setVisible(true);
+        String qrCode = "-1";
+        while (window.isVisible()){
+            BufferedImage image = webcam.getImage();
+            String filename = "selfie.jpg";
+
+            ImageIO.write(image, ImageUtils.FORMAT_JPG, new File("selfie.jpg"));
+
+            qrCode = QrController.readQRCodeFromFile("selfie.jpg");
+            System.out.println(qrCode);
+            Thread.sleep(1500);
+            if(qrCode != null){
+                webcam.close();
+                window.dispose();
+                break;
+            }
+        }
+        try {
+            webcam.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(UserIDQrEncryption.decrypt(qrCode));
+        loadDashboards(Integer.parseInt(UserIDQrEncryption.decrypt(qrCode)), event);
     }
 
 }

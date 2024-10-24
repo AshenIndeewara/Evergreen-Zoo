@@ -63,12 +63,12 @@
       </JFXButton>
       <AnchorPane layoutX="55.0" layoutY="166.0" prefHeight="710.0" prefWidth="1436.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="96.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="166.0">
          <children>
-            <TableView fx:id="staffTable" layoutX="24.0" layoutY="23.0" prefHeight="593.0" prefWidth="1265.0" AnchorPane.bottomAnchor="93.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="23.0">
+            <TableView fx:id="staffTable" layoutX="24.0" layoutY="23.0" prefHeight="593.0" prefWidth="1265.0" stylesheets="@../../asserts/style/table.css" AnchorPane.bottomAnchor="93.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="23.0">
               <columns>
                 <TableColumn fx:id="namCol" prefWidth="451.6666259765625" text="Name" />
                 <TableColumn fx:id="roleCol" prefWidth="338.0" text="Role" />
                   <TableColumn fx:id="cntactNumber" prefWidth="259.0" text="Contact Number" />
-                  <TableColumn fx:id="actionCol" prefWidth="359.0" text="Email" />
+                  <TableColumn fx:id="emailCol" prefWidth="379.0" text="Email" />
               </columns>
             </TableView>
             <GridPane layoutX="1273.0" layoutY="638.0" prefHeight="53.0" prefWidth="186.0" AnchorPane.leftAnchor="1273.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="638.0">

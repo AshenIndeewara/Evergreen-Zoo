@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -20,7 +21,7 @@ import java.util.ResourceBundle;
 public class StaffController implements Initializable {
     StaffModel model = new StaffModel();
     @FXML
-    private TableColumn<StaffDto, String> actionCol;
+    private TableColumn<StaffDto, String> emailCol;
 
     @FXML
     private TableColumn<StaffDto, String> cntactNumber;
@@ -51,6 +52,10 @@ public class StaffController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        namCol.setCellValueFactory(new PropertyValueFactory<>("staffName"));
+        roleCol.setCellValueFactory(new PropertyValueFactory<>("staffRole"));
+        cntactNumber.setCellValueFactory(new PropertyValueFactory<>("staffContact"));
+        emailCol.setCellValueFactory(new PropertyValueFactory<>("staffEmail"));
         try {
             refreshTable();
         } catch (SQLException e) {
@@ -59,14 +64,13 @@ public class StaffController implements Initializable {
     }
 
     private void refreshTable() throws SQLException {
+
         staffTable.getItems().clear();
         ArrayList<StaffDto> allStaff = model.getAllStaff();
         ObservableList<StaffDto> staffTMS = FXCollections.observableArrayList();
         for (StaffDto staff : allStaff) {
-            System.out.println(staff);
             staffTMS.add(staff);
         }
         staffTable.setItems(staffTMS);
     }
-
 }

@@ -11,6 +11,15 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class RegisterModel {
+    public int getLastUserId() throws SQLException {
+        String SqlGetID = "SELECT LAST_INSERT_ID() AS `id`";
+        ResultSet execute = CrudUtil.execute(SqlGetID);
+        if(execute.next()){
+            return execute.getInt("id");
+        }
+        return -1;
+    }
+
     public int getRoleIdByDescription(String description) throws SQLException {
         String sql = "select role_id from role where description=?";
         ResultSet resultSet = CrudUtil.execute(sql, description);

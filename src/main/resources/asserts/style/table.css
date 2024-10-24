@@ -1,69 +1,125 @@
 .table-view {
-    -fx-background-color: #f5f5f5;
-    -fx-border-color: #dddddd;
-    -fx-border-radius: 8px; /* Rounded corners */
-    -fx-padding: 10px;
-    -fx-background-insets: 0;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 10, 0.5, 0, 2); /* Subtle shadow effect */
+    -fx-background-color: transparent;
+    -fx-border-color: #2c3e50;
+    -fx-border-width: 2px;
+    -fx-border-radius: 12px;
+    -fx-padding: 0px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2);
+    -fx-transition: all 0.35s ease-in-out;
+}
+
+.table-view:focused {
+    -fx-border-color: #3498db;
 }
 
 .table-view .column-header-background {
-    -fx-background-color: linear-gradient(to bottom, #4CAF50, #388E3C);
-    -fx-border-radius: 8px 8px 0 0; /* Rounded corners for header */
-}
-
-.table-view .column-header, .table-view .column-header .label {
-    -fx-text-fill: black; /* White text color for headers */
-    -fx-font-weight: bold; /* Bold font for header text */
-    -fx-font-size: 18px;
-    -fx-alignment: CENTER; /* Center align the header text */
-}
-
-.table-view .table-row-cell {
-    -fx-background-color: white; /* Default row background color */
-    -fx-border-color: transparent; /* Remove cell borders */
+    -fx-background-color: linear-gradient(to right, #2c3e50, #3498db);
+    -fx-background-radius: 10px 10px 0px 0px;
     -fx-padding: 8px;
-    -fx-background-insets: 0, 0 0 1 0;
 }
 
-.table-view .table-row-cell:hover {
-    -fx-background-color: #f1f8e9; /* Light green background when hovering over a row */
+.table-view .column-header-background .label {
+    -fx-text-fill: white;
+    -fx-font-family: 'Poppins';
+    -fx-font-weight: 600;
+    -fx-font-size: 14px;
+    -fx-padding: 5px 10px;
 }
 
-.table-view .table-row-cell:odd {
-    -fx-background-color: #f9f9f9; /* Slightly different color for alternate rows */
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-border-width: 0 1px 0 0;
+    -fx-border-color: rgba(255,255,255,0.1);
 }
 
 .table-view .table-cell {
-    -fx-padding: 8px;
-    -fx-font-size: 13px; /* Slightly smaller text size for cells */
-    -fx-text-fill: #333333; /* Darker text color for better readability */
-    -fx-alignment: CENTER_LEFT; /* Align cell text to the left */
+    -fx-alignment: center-left;
+    -fx-padding: 12px 15px;
+    -fx-font-family: 'Poppins';
+    -fx-font-size: 13px;
+    -fx-transition: all 0.2s ease-out;
 }
 
-.table-view .table-row-cell:selected {
-    -fx-background-color: #66BB6A; /* Green background color for selected row */
-    -fx-text-fill: white; /* White text color for selected row */
+/* Style for numerical values */
+.table-cell.numeric {
+    -fx-font-family: 'Roboto Mono';
+    -fx-alignment: center-right;
 }
 
-.table-view .table-row-cell:focused {
-    -fx-background-color: #66BB6A; /* Green background when the row is focused */
-    -fx-text-fill: white;
+.table-row-cell {
+    -fx-background-color: rgba(255, 255, 255, 0.95);
+    -fx-border-color: transparent;
+    -fx-table-cell-border-color: #ecf0f1;
+    -fx-transition: all 0.3s ease-out;
 }
 
-.table-view .scroll-bar {
-    -fx-padding: 0;
+.table-row-cell:odd {
+    -fx-background-color: rgba(236, 240, 241, 0.95);
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #e1f5fe;
+    -fx-cursor: hand;
+    -fx-scale-x: 1.01;
+    -fx-scale-y: 1.01;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #bbdefb;
+    -fx-text-background-color: #2c3e50;
+    -fx-font-weight: bold;
+}
+
+/* Custom Scrollbar */
+.table-view .scroll-bar:horizontal,
+.table-view .scroll-bar:vertical {
     -fx-background-color: transparent;
 }
 
+.table-view .scroll-bar:horizontal .thumb,
 .table-view .scroll-bar:vertical .thumb {
-    -fx-background-color: #388E3C; /* Green scroll thumb for vertical scrollbar */
-    -fx-background-insets: 2;
-    -fx-background-radius: 4px;
+    -fx-background-color: #bdc3c7;
+    -fx-background-radius: 20px;
+    -fx-transition: background-color 0.3s ease-out;
 }
 
-.table-view .scroll-bar:horizontal .thumb {
-    -fx-background-color: #388E3C; /* Green scroll thumb for horizontal scrollbar */
-    -fx-background-insets: 2;
-    -fx-background-radius: 4px;
+.table-view .scroll-bar:horizontal .thumb:hover,
+.table-view .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #95a5a6;
+}
+
+/* Empty rows */
+.table-row-cell:empty {
+    -fx-background-color: white;
+}
+
+.table-row-cell:empty .table-cell {
+    -fx-border-width: 0px;
+}
+
+/* Status column styling - Add these classes to specific columns in Java */
+.table-cell.status-active {
+    -fx-text-fill: #27ae60;
+    -fx-font-weight: bold;
+}
+
+.table-cell.status-inactive {
+    -fx-text-fill: #c0392b;
+    -fx-font-weight: bold;
+}
+
+.table-cell.priority-high {
+    -fx-text-fill: #e74c3c;
+    -fx-font-weight: bold;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { -fx-scale-x: 1; -fx-scale-y: 1; }
+    50% { -fx-scale-x: 1.02; -fx-scale-y: 1.02; }
+    100% { -fx-scale-x: 1; -fx-scale-y: 1; }
+}
+
+.table-row-cell:selected {
+    -fx-animation: pulse 0.3s ease-in-out;
 }

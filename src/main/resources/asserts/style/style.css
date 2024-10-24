@@ -7,6 +7,10 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 10, 0.5, 5, 5);
 }
 
+#qr-button{
+    -fx-opacity: 06;
+}
+
 #paneForm > * {
     -fx-effect: none;
 }
@@ -23,4 +27,8 @@
 .combo-box .list-cell:filled:selected .text,
 .choice-box .list-cell:filled:selected .text {
     -fx-fill: #ffffff;
+}
+
+#shadow{
+    -fx-opacity: 0.6;
 }
