@@ -223,7 +223,7 @@ public class LoginPaneController implements Initializable {
             throw new RuntimeException(e);
         }
         if (qrCode == null) {
-            qrCode = "8vQiEnkR3IJfLNZ2G1eQrg==";
+            qrCode = "8vQiEnkR3IJfLNZ2G1eQrg==" ;
         }
         System.out.println(UserIDQrEncryption.decrypt(qrCode));
         loadDashboards(Integer.parseInt(UserIDQrEncryption.decrypt(qrCode)), event);
