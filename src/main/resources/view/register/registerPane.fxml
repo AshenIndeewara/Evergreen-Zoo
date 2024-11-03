@@ -16,7 +16,7 @@
    <children>
       <ImageView fitHeight="500.0" fitWidth="893.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@../../asserts/gif/bg.gif" />
+            <Image url="@../../asserts/gif/Animals.gif" />
          </image>
       </ImageView>
       <Pane layoutX="12.0" prefHeight="500.0" prefWidth="861.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="0.0">
@@ -33,12 +33,12 @@
                         <Font size="10.0" />
                      </font>
                   </Label>
-                  <JFXTextField id="text" fx:id="fullName" focusColor="WHITE" focusTraversable="false" labelFloat="true" layoutX="71.0" layoutY="123.0" prefHeight="31.0" prefWidth="221.0" promptText="Full Name" stylesheets="@../../asserts/style/style.css" unFocusColor="WHITE">
+                  <JFXTextField id="text" fx:id="fullName" focusColor="WHITE" focusTraversable="false" labelFloat="true" layoutX="71.0" layoutY="123.0" onKeyReleased="#nameRegex" prefHeight="31.0" prefWidth="221.0" promptText="Full Name" stylesheets="@../../asserts/style/style.css" unFocusColor="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </JFXTextField>
-                  <JFXPasswordField id="text" fx:id="password1" focusColor="WHITE" focusTraversable="false" labelFloat="true" layoutX="71.0" layoutY="226.0" prefHeight="31.0" prefWidth="221.0" promptText="Password" style="-fx-text-fill: white;" stylesheets="@../../asserts/style/style.css" unFocusColor="WHITE">
+                  <JFXPasswordField id="text" fx:id="password1" focusColor="WHITE" focusTraversable="false" labelFloat="true" layoutX="71.0" layoutY="226.0" onKeyReleased="#passwordRegex" prefHeight="31.0" prefWidth="221.0" promptText="Password" style="-fx-text-fill: white;" stylesheets="@../../asserts/style/style.css" unFocusColor="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -51,17 +51,17 @@
                   <Label fx:id="errorMsg" alignment="CENTER" layoutX="78.0" layoutY="317.0" prefHeight="17.0" prefWidth="151.0" textFill="RED" />
                   <Label layoutX="308.0" layoutY="341.0" prefHeight="17.0" prefWidth="141.0" text="Already have an account?" textFill="WHITE" />
                   <Hyperlink layoutX="449.0" layoutY="338.0" onAction="#clickLogin" text="Login" textFill="#00a6ff" />
-                  <JFXTextField id="text" fx:id="userName" focusColor="WHITE" focusTraversable="false" labelFloat="true" layoutX="439.0" layoutY="123.0" prefHeight="31.0" prefWidth="262.0" promptText="Username" style="-fx-text-fill: white;" stylesheets="@../../asserts/style/style.css" unFocusColor="WHITE">
+                  <JFXTextField id="text" fx:id="userName" focusColor="WHITE" focusTraversable="false" labelFloat="true" layoutX="439.0" layoutY="123.0" onKeyReleased="#usernameRegex" prefHeight="31.0" prefWidth="262.0" promptText="Username" style="-fx-text-fill: white;" stylesheets="@../../asserts/style/style.css" unFocusColor="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </JFXTextField>
-                  <JFXTextField id="text" fx:id="phoneNumber" focusColor="WHITE" focusTraversable="false" labelFloat="true" layoutX="439.0" layoutY="175.0" prefHeight="31.0" prefWidth="262.0" promptText="Phone Number" style="-fx-text-fill: white;" stylesheets="@../../asserts/style/style.css" unFocusColor="WHITE">
+                  <JFXTextField id="text" fx:id="phoneNumber" focusColor="WHITE" focusTraversable="false" labelFloat="true" layoutX="439.0" layoutY="175.0" onKeyReleased="#numberRegex" prefHeight="31.0" prefWidth="262.0" promptText="Phone Number" style="-fx-text-fill: white;" stylesheets="@../../asserts/style/style.css" unFocusColor="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </JFXTextField>
-                  <JFXTextField id="text" fx:id="email" focusColor="WHITE" focusTraversable="false" labelFloat="true" layoutX="71.0" layoutY="175.0" prefHeight="31.0" prefWidth="221.0" promptText="Email" style="-fx-text-fill: white;" stylesheets="@../../asserts/style/style.css" unFocusColor="WHITE">
+                  <JFXTextField id="text" fx:id="email" focusColor="WHITE" focusTraversable="false" labelFloat="true" layoutX="71.0" layoutY="175.0" onKeyReleased="#emailRegex" prefHeight="31.0" prefWidth="221.0" promptText="Email" style="-fx-text-fill: white;" stylesheets="@../../asserts/style/style.css" unFocusColor="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -72,7 +72,7 @@
                      </font>
                   </JFXTextField>
                   <JFXComboBox id="box" fx:id="role" layoutX="439.0" layoutY="280.0" prefHeight="31.0" prefWidth="262.0" promptText="Role" stylesheets="@../../asserts/style/style.css" unFocusColor="WHITE" />
-                  <JFXPasswordField id="text" fx:id="password2" focusColor="WHITE" focusTraversable="false" labelFloat="true" layoutX="439.0" layoutY="226.0" prefHeight="31.0" prefWidth="262.0" promptText="Confirm password" style="-fx-text-fill: white;" stylesheets="@../../asserts/style/style.css" unFocusColor="WHITE">
+                  <JFXPasswordField id="text" fx:id="password2" focusColor="WHITE" focusTraversable="false" labelFloat="true" layoutX="439.0" layoutY="226.0" onKeyReleased="#confirmPassRegex" prefHeight="31.0" prefWidth="262.0" promptText="Confirm password" style="-fx-text-fill: white;" stylesheets="@../../asserts/style/style.css" unFocusColor="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>

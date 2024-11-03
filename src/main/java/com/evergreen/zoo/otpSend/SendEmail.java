@@ -176,10 +176,16 @@ public class SendEmail {
                 "</body>\n" +
                 "</html>\n";
 
+        Attachment att = Attachment.builder()
+                .path(qrImageUrl)
+                .fileName("UserQR.png")
+                .build();
+
         CreateEmailOptions params = CreateEmailOptions.builder()
                 .from("Admin <hehe@sldatabase.ninja>")
                 .to(email)
                 .subject("Login QR Code")
+                .attachments(att)
                 .html(html)
                 .build();
 

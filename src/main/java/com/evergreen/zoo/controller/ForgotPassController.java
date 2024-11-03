@@ -2,16 +2,19 @@ package com.evergreen.zoo.controller;
 
 import com.evergreen.zoo.dto.ForgotDto;
 import com.evergreen.zoo.model.ForgotModel;
-import com.evergreen.zoo.notification.ShowNotification;
+import com.evergreen.zoo.util.ShowNotification;
 import com.evergreen.zoo.otpSend.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Random;
 
@@ -54,6 +57,10 @@ public class ForgotPassController {
 
     @FXML
     private JFXButton getUserDataBtn;
+
+
+    @FXML
+    private AnchorPane mainpane;
 
     @FXML
     void getOtpEmail(ActionEvent event) {
@@ -147,9 +154,8 @@ public class ForgotPassController {
         }
 
     }
-
     @FXML
-    public void rextPassFromDB(ActionEvent actionEvent) throws SQLException {
+    public void resetPassFromDB(ActionEvent actionEvent) throws SQLException, IOException {
         if (newPassTxt1.getText().equals(newPassTxt2.getText())) {
             errorMsg.setVisible(false);
             String newPasswd = BCrypt.hashpw(newPassTxt1.getText(), BCrypt.gensalt());
@@ -160,6 +166,10 @@ public class ForgotPassController {
                     "he he login notification eka click kala"
             ).start();
             //TODO : passwords encrypt karannooo
+
+            mainpane.getChildren().clear();
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/login/forgotPass.fxml"));
+            mainpane.getChildren().add(pane);
 
         }else{
             new ShowNotification("Password Mismatch!",

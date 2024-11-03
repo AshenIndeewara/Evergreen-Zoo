@@ -78,6 +78,39 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#callStocks" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="67.0" prefWidth="356.0" style="-fx-background-color: #1e293c;" text="   Stocks" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" smooth="false">
+                                 <image>
+                                    <Image url="@../../asserts/icon/stock.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#callTicket" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="67.0" prefWidth="356.0" style="-fx-background-color: #1e293c;" text="   Ticket" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" smooth="false">
+                                 <image>
+                                    <Image url="@../../asserts/icon/ticket_W.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
                         <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#callReports" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="67.0" prefWidth="356.0" style="-fx-background-color: #1e293c;" text="   Reports" textFill="WHITE">
                            <font>
                               <Font size="25.0" />
@@ -89,9 +122,6 @@
                                  </image>
                               </ImageView>
                            </graphic>
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>

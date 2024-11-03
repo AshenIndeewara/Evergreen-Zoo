@@ -55,7 +55,7 @@ public class AdminDashboardController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         titalLable.setText("Dashboard");
         try {
-            callPane("dashboard.fxml");
+            callPane("admin/dashboard.fxml");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -66,7 +66,6 @@ public class AdminDashboardController implements Initializable {
     private void setDate() {
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.seconds(1), event -> {
-                    // Update the label with the current date
                     LocalDate currentDate = LocalDate.now();
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
                     dateLabel.setText(formatter.format(currentDate));
@@ -109,7 +108,7 @@ public class AdminDashboardController implements Initializable {
     @FXML
     void callDashBoard(ActionEvent event) throws IOException {
         titalLable.setText("DashBoard");
-        callPane("dashboard.fxml");
+        callPane("admin/dashboard.fxml");
 
     }
 
@@ -126,13 +125,24 @@ public class AdminDashboardController implements Initializable {
     }
 
     void callPane(String path) throws IOException {
-        AnchorPane newPane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/admin/" + path)));
+        AnchorPane newPane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/" + path)));
         mainPane.getChildren().setAll(newPane);
     }
     @FXML
     void callStaff(ActionEvent event) throws IOException {
         titalLable.setText("Staff Management");
-        callPane("staffPane.fxml");
+        callPane("admin/staffPane.fxml");
 
+    }
+
+    @FXML
+    void callTicket(ActionEvent event) throws IOException {
+        titalLable.setText("Ticket Management");
+        callPane("ticketPane.fxml");
+    }
+
+    @FXML
+    void callStocks(ActionEvent event) {
+        titalLable.setText("Stock Management");
     }
 }

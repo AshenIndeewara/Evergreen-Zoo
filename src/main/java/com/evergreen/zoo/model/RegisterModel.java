@@ -39,7 +39,7 @@ public class RegisterModel {
         return roles;
     }
 
-    public Boolean registorUser(RegisterDto registerDto) throws SQLException {
+    public Boolean registerUser(RegisterDto registerDto) throws SQLException {
         System.out.println("registerUser run wenawa");
         Connection connection = DBConnection.getInstance().getConnection();
 

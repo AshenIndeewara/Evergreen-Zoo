@@ -17,10 +17,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class QrController {
-    private String qrAPI = "http://api.qrserver.com/v1/";
-    private String qrSize = "300x300";
 
     public String getQrAPI(String userID){
+        String qrAPI = "http://api.qrserver.com/v1/";
+        String qrSize = "300x300";
         return qrAPI + "create-qr-code/?size=" + qrSize + "&data=" + userID;
     }
     public static String readQRCodeFromFile(String filePath) {

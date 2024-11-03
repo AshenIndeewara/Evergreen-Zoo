@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="503.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evergreen.zoo.controller.ForgotPassController">
+<AnchorPane fx:id="mainpane" prefHeight="503.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evergreen.zoo.controller.ForgotPassController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../asserts/gif/bg.gif" />
+            <Image url="@../../asserts/gif/Animals.gif" />
          </image>
       </ImageView>
       <Pane id="paneForm" layoutX="41.0" layoutY="54.0" prefHeight="380.0" prefWidth="376.0" stylesheets="@../../asserts/style/style.css">
@@ -31,11 +31,11 @@
                <font>
                   <Font size="15.0" />
                </font></TextField>
-            <JFXTextField id="text" fx:id="otpTxt" disable="true" labelFloat="true" layoutX="68.0" layoutY="238.0" prefHeight="31.0" prefWidth="165.0" promptText="Enter OTP" stylesheets="@../../asserts/style/style.css">
+            <JFXTextField id="text" fx:id="otpTxt" disable="true" labelFloat="true" layoutX="100.0" layoutY="240.0" prefHeight="31.0" prefWidth="165.0" promptText="Enter OTP" stylesheets="@../../asserts/style/style.css">
                <font>
                   <Font size="15.0" />
                </font></JFXTextField>
-            <JFXButton fx:id="restPassBtn" disable="true" layoutX="96.0" layoutY="303.0" onAction="#rextPass" style="-fx-background-color: #B8B098;" text="Rest Password">
+            <JFXButton fx:id="restPassBtn" disable="true" layoutX="96.0" layoutY="303.0" onAction="#rextPass" prefHeight="31.0" prefWidth="133.0" style="-fx-background-color: #B8B098;" text="Rest Password">
                <font>
                   <Font size="15.0" />
                </font></JFXButton>
@@ -60,7 +60,7 @@
                <font>
                   <Font size="15.0" />
                </font></JFXTextField>
-            <JFXButton fx:id="restPassBtn1" layoutX="142.0" layoutY="240.0" onAction="#rextPassFromDB" prefHeight="27.0" prefWidth="92.0" style="-fx-background-color: #B8B098;" text="Rest Password" visible="false">
+            <JFXButton fx:id="restPassBtn1" layoutX="122.0" layoutY="240.0" onAction="#resetPassFromDB" prefHeight="31.0" prefWidth="165.0" style="-fx-background-color: #B8B098;" text="Rest Password" visible="false">
                <font>
                   <Font size="15.0" />
                </font></JFXButton>

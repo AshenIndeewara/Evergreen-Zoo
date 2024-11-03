@@ -18,6 +18,8 @@ import javafx.scene.image.ImageView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -28,11 +30,13 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
-import com.evergreen.zoo.notification.ShowNotification;
+import com.evergreen.zoo.util.ShowNotification;
 import org.mindrot.jbcrypt.BCrypt;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import static com.evergreen.zoo.util.CheckRegex.checkRegex;
 
 public class LoginPaneController implements Initializable {
     private LoginModel loginModel = new LoginModel();
@@ -54,6 +58,22 @@ public class LoginPaneController implements Initializable {
     @FXML
     private ImageView imageview;
 
+    private Boolean isUserValid = false;
+
+    ActionEvent actionEvent;
+
+    @FXML
+    void usernameRegex(KeyEvent event) {
+        if(checkRegex("username", userTxt.getText())) {
+            userTxt.setStyle("-fx-text-fill: Green");
+            isUserValid = true;
+        } else {
+            userTxt.setStyle("-fx-text-fill: red");
+            isUserValid = false;
+        }
+    }
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 //        URL imageUrl = getClass().getResource("/asserts/mr-bean-waiting.gif");
@@ -63,6 +83,14 @@ public class LoginPaneController implements Initializable {
 //        } else {
 //            System.out.println("Image not found");
 //        }
+    }
+
+
+    @FXML
+    void enter(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            loginBtn.fire();
+        }
     }
 
     private void closeWindow(ActionEvent event) throws IOException {
@@ -89,6 +117,14 @@ public class LoginPaneController implements Initializable {
     }
     @FXML
     void checkLogin(ActionEvent event) throws Exception {
+        if (!isUserValid) {
+            new ShowNotification("Invalid username",
+                    "Please enter a valid username",
+                    "unsuccess.png",
+                    "he he login notification eka click kala"
+            ).start();
+            return;
+        }
         LoginDto loginDto = new LoginDto(userTxt.getText(), passTxt.getText());
         System.out.println(loginDto.toString());
         ResultSet resultSet = loginModel.checkLogin(loginDto);

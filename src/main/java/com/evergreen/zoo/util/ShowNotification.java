@@ -1,4 +1,4 @@
-package com.evergreen.zoo.notification;
+package com.evergreen.zoo.util;
 
 import javafx.application.Platform;
 import javafx.geometry.Pos;
@@ -8,7 +8,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import lombok.AllArgsConstructor;
-import lombok.Setter;
 import org.controlsfx.control.Notifications;
 
 @AllArgsConstructor
@@ -35,7 +34,7 @@ public class ShowNotification extends Thread{
 
         DropShadow dropShadow = new DropShadow();
         dropShadow.setRadius(10.0);
-        dropShadow.setOffsetX(5.0);
+        dropShadow.setOffsetX(10.0);
         dropShadow.setOffsetY(5.0);
         dropShadow.setColor(Color.color(0.0, 0.0, 0.0, 0.5)); // Semi-transparent black shadow
         imageView.setEffect(dropShadow);

@@ -21,7 +21,7 @@
       </ImageView>
       <Pane layoutX="14.0" prefHeight="500.0" prefWidth="511.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="364.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="66.0" layoutY="14.0" prefHeight="39.0" prefWidth="151.0" text="Evergreen" textFill="#31ae4e">
+            <Label layoutX="114.0" layoutY="14.0" prefHeight="39.0" prefWidth="151.0" text="Evergreen" textFill="#31ae4e">
                <font>
                   <Font name="Comic Sans MS" size="28.0" />
                </font>
@@ -39,12 +39,12 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXTextField id="text" fx:id="userTxt" focusColor="WHITE" focusTraversable="false" labelFloat="true" layoutX="69.0" layoutY="145.0" promptText="Username" stylesheets="@../../asserts/style/style.css" unFocusColor="WHITE">
+                  <JFXTextField id="text" fx:id="userTxt" focusColor="WHITE" focusTraversable="false" labelFloat="true" layoutX="69.0" layoutY="145.0" onKeyReleased="#usernameRegex" promptText="Username" stylesheets="@../../asserts/style/style.css" unFocusColor="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </JFXTextField>
-                  <JFXPasswordField id="text" fx:id="passTxt" focusColor="WHITE" focusTraversable="false" labelFloat="true" layoutX="69.0" layoutY="211.0" promptText="password" style="-fx-text-fill: white;" stylesheets="@../../asserts/style/style.css" unFocusColor="WHITE">
+                  <JFXPasswordField id="text" fx:id="passTxt" focusColor="WHITE" focusTraversable="false" labelFloat="true" layoutX="69.0" layoutY="211.0" onKeyPressed="#enter" promptText="password" style="-fx-text-fill: white;" stylesheets="@../../asserts/style/style.css" unFocusColor="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
