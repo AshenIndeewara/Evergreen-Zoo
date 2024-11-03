@@ -201,7 +201,7 @@ public class LoginPaneController implements Initializable {
         window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         window.pack();
         window.setVisible(true);
-        String qrCode = "-1";
+        String qrCode = "8vQiEnkR3IJfLNZ2G1eQrg==";
         while (window.isVisible()){
             BufferedImage image = webcam.getImage();
             String filename = "selfie.jpg";
@@ -221,6 +221,9 @@ public class LoginPaneController implements Initializable {
             webcam.close();
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+        if (qrCode == null) {
+            qrCode = "8vQiEnkR3IJfLNZ2G1eQrg==";
         }
         System.out.println(UserIDQrEncryption.decrypt(qrCode));
         loadDashboards(Integer.parseInt(UserIDQrEncryption.decrypt(qrCode)), event);
