@@ -5,21 +5,15 @@ import com.resend.core.exception.ResendException;
 import com.resend.services.emails.model.Attachment;
 import com.resend.services.emails.model.CreateEmailOptions;
 import com.resend.services.emails.model.CreateEmailResponse;
-import javafx.scene.image.Image;
 
-import java.io.File;
 import java.io.IOException;
-
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.util.Base64;
 
 public class SendEmail {
     public static void sendEmail(String email, String otp) {
         Resend resend = new Resend(System.getenv("resendKey"));
 
         CreateEmailOptions params = CreateEmailOptions.builder()
-                .from("evergreen@sldatabase.ninja")
+                .from("Evergreen <evergreen@sldatabase.ninja>")
                 .to(email)
                 .subject("Your, Evergreen OTP "+otp)
                 .html("<!DOCTYPE html>" +
@@ -182,7 +176,7 @@ public class SendEmail {
                 .build();
 
         CreateEmailOptions params = CreateEmailOptions.builder()
-                .from("Admin <hehe@sldatabase.ninja>")
+                .from("Evergreen <evergreen@sldatabase.ninja>")
                 .to(email)
                 .subject("Login QR Code")
                 .attachments(att)

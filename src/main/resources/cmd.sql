@@ -104,20 +104,26 @@ CREATE TABLE IF NOT EXISTS `ticket` (
         `price` DECIMAL(10, 2) NOT NULL,
         `ticketType` VARCHAR(255) NOT NULL,
         `price` DECIMAL(10, 2) NOT NULL,
-        `employeeId` INT NOT NULL,
         PRIMARY KEY (`ticketID`)
-        FOREIGN KEY (`employeeId`) REFERENCES `employee`(`id`)
     );
+
+INSERT INTO `ticket` (ticketType, price) VALUES
+        ('Adult', 200.00),
+        ('Child', 50.00),
+        ('Student', 100.00),
+        ('Foreign', 1000.00),
+        ('ForeignChild', 500.00);
 
 CREATE TABLE IF NOT EXISTS `visitor` (
         `visitorID` INT NOT NULL AUTO_INCREMENT,
-        `name` VARCHAR(255) NOT NULL,
-        `age` VARCHAR(255) NOT NULL,
-        `contact` VARCHAR(255),
-        `ticketId` INT NOT NULL,
+        `total` DECIMAL(10, 2) NOT NULL,
+        `child` int NOT NULL,
+        `adult` int NOT NULL,
+        `foreigner` int NOT NULL,
+        `foreignerChild` int NOT NULL,
+        `student` int NOT NULL,
         `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        PRIMARY KEY (`visitorID`),
-        FOREIGN KEY (`ticketId`) REFERENCES `ticket`(`ticketID`)
+        PRIMARY KEY (`visitorID`)
     );
 
 CREATE TABLE IF NOT EXISTS `eventPrograms` (

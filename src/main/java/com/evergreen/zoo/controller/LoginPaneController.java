@@ -156,14 +156,17 @@ public class LoginPaneController implements Initializable {
     }
 
     void loadDashboards(int role, ActionEvent event) throws IOException {
-        closeWindow(event);
         if (role == 1) {
+            closeWindow(event);
             loadWindow("admin/adminDashboard.fxml", true);
         } else if (role == 2) {
+            closeWindow(event);
             //TODO : make dashboards
         } else if (role == 3) {
+            closeWindow(event);
             //TODO : make dashboards
         } else if (role == 4) {
+            closeWindow(event);
             //TODO : make dashboards
         }else{
             System.out.println("Invalid role");
@@ -223,7 +226,7 @@ public class LoginPaneController implements Initializable {
             throw new RuntimeException(e);
         }
         if (qrCode == null) {
-            qrCode = "8vQiEnkR3IJfLNZ2G1eQrg==" ;
+            qrCode = "8vQiEnkR3IJfLNZ2G1eQrg==";
         }
         System.out.println(UserIDQrEncryption.decrypt(qrCode));
         loadDashboards(Integer.parseInt(UserIDQrEncryption.decrypt(qrCode)), event);

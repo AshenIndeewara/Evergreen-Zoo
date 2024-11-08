@@ -156,7 +156,7 @@ public class RegisterPaneController implements Initializable {
     @FXML
     void confirmPassRegex(KeyEvent event) {
         if (password1.getText().equals(password2.getText())) {
-            password2.setStyle("-fx-text-fill: GREEN");
+            password2.setStyle("-fx-text-fill: BLACK");
             isPassValid = true;
         } else {
             password2.setStyle("-fx-text-fill: RED");
@@ -168,7 +168,7 @@ public class RegisterPaneController implements Initializable {
     @FXML
     void emailRegex(KeyEvent event) {
         if (CheckRegex.checkRegex("email", email.getText())) {
-            email.setStyle("-fx-text-fill: GREEN");
+            email.setStyle("-fx-text-fill: BLACK");
             isEmailValid = true;
         } else {
             email.setStyle("-fx-text-fill: RED");
@@ -179,7 +179,7 @@ public class RegisterPaneController implements Initializable {
     @FXML
     void nameRegex(KeyEvent event) {
         if(CheckRegex.checkRegex("name", fullName.getText())) {
-            fullName.setStyle("-fx-text-fill: GREEN");
+            fullName.setStyle("-fx-text-fill: BLACK");
             isNameValid = true;
         }else {
             fullName.setStyle("-fx-text-fill: RED");
@@ -190,7 +190,7 @@ public class RegisterPaneController implements Initializable {
     @FXML
     void numberRegex(KeyEvent event) {
         if(CheckRegex.checkRegex("number", phoneNumber.getText())) {
-            phoneNumber.setStyle("-fx-text-fill: GREEN");
+            phoneNumber.setStyle("-fx-text-fill: BLACK");
             isNumberValid = true;
         }else {
             phoneNumber.setStyle("-fx-text-fill: RED");
@@ -202,7 +202,7 @@ public class RegisterPaneController implements Initializable {
     void passwordRegex(KeyEvent event) {
         System.out.println(password1.getText());
         if (CheckRegex.checkRegex("password", password1.getText())) {
-            password1.setStyle("-fx-text-fill: GREEN");
+            password1.setStyle("-fx-text-fill: BLACK");
             isPassValid = true;
         } else {
             password1.setStyle("-fx-text-fill: RED");
@@ -213,7 +213,7 @@ public class RegisterPaneController implements Initializable {
     @FXML
     void usernameRegex(KeyEvent event) {
         if(CheckRegex.checkRegex("username", userName.getText())) {
-            userName.setStyle("-fx-text-fill: GREEN");
+            userName.setStyle("-fx-text-fill: BLACK");
             isUserValid = true;
         }else {
             userName.setStyle("-fx-text-fill: RED");

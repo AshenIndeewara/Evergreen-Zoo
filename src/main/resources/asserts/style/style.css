@@ -32,3 +32,12 @@
 #shadow{
     -fx-opacity: 0.6;
 }
+
+/*.jfx-combo-box {*/
+/*    -fx-text-inner-color: color;*/
+/*    -fx-prompt-text-fill: color;*/
+/*}*/
+
+.jfx-combo-box .cell {
+    -fx-font-size: 20;
+}

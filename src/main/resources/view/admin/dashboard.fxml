@@ -18,7 +18,7 @@
 
 <AnchorPane prefHeight="972.0" prefWidth="1587.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evergreen.zoo.controller.DashboardController">
    <children>
-      <GridPane hgap="15.0" layoutX="95.0" layoutY="25.0" prefHeight="139.0" prefWidth="1506.0" style="-fx-padding: 10;" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="21.0">
+      <GridPane hgap="15.0" layoutX="95.0" layoutY="25.0" prefHeight="139.0" prefWidth="1545.0" style="-fx-padding: 10;" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="21.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -36,7 +36,7 @@
                         <Image url="@../../asserts/icon/animal_black.png" />
                      </image>
                      <VBox.margin>
-                        <Insets left="300.0" top="20.0" />
+                        <Insets left="300.0" top="10.0" />
                      </VBox.margin>
                   </ImageView>
                   <Label prefHeight="34.0" prefWidth="175.0" text="Total Animals">
@@ -47,7 +47,7 @@
                         <Insets left="15.0" />
                      </VBox.margin>
                   </Label>
-                  <Label prefHeight="30.0" prefWidth="195.0" text="1,254">
+                  <Label fx:id="animalCount" prefHeight="30.0" prefWidth="195.0" text="1,254">
                      <VBox.margin>
                         <Insets left="15.0" />
                      </VBox.margin>
@@ -64,7 +64,7 @@
                         <Image url="@../../asserts/icon/staff_black.png" />
                      </image>
                      <VBox.margin>
-                        <Insets left="300.0" top="20.0" />
+                        <Insets left="300.0" top="10.0" />
                      </VBox.margin>
                   </ImageView>
                   <Label prefHeight="34.0" prefWidth="175.0" text="Total Staff">
@@ -75,7 +75,7 @@
                         <Insets left="15.0" />
                      </VBox.margin>
                   </Label>
-                  <Label prefHeight="30.0" prefWidth="195.0" text="1,254">
+                  <Label fx:id="staffCount" prefHeight="30.0" prefWidth="195.0" text="1,254">
                      <VBox.margin>
                         <Insets left="15.0" />
                      </VBox.margin>
@@ -92,10 +92,10 @@
                         <Image url="@../../asserts/icon/ticket.png" />
                      </image>
                      <VBox.margin>
-                        <Insets left="300.0" top="20.0" />
+                        <Insets left="300.0" top="10.0" />
                      </VBox.margin>
                   </ImageView>
-                  <Label prefHeight="34.0" prefWidth="175.0" text="Daily Visitors">
+                  <Label prefHeight="34.0" prefWidth="175.0" text="Total Visitors">
                      <font>
                         <Font name="Segoe UI Semibold" size="23.0" />
                      </font>
@@ -103,7 +103,7 @@
                         <Insets left="15.0" />
                      </VBox.margin>
                   </Label>
-                  <Label prefHeight="30.0" prefWidth="195.0" text="1,254">
+                  <Label fx:id="visitorCount" prefHeight="30.0" prefWidth="332.0" text="1,254">
                      <VBox.margin>
                         <Insets left="15.0" />
                      </VBox.margin>
@@ -120,7 +120,7 @@
                         <Image url="@../../asserts/icon/count.png" />
                      </image>
                      <VBox.margin>
-                        <Insets left="300.0" top="20.0" />
+                        <Insets left="300.0" top="10.0" />
                      </VBox.margin>
                   </ImageView>
                   <Label prefHeight="34.0" prefWidth="207.0" text="Upcoming Events">
@@ -131,7 +131,7 @@
                         <Insets left="15.0" />
                      </VBox.margin>
                   </Label>
-                  <Label prefHeight="30.0" prefWidth="195.0" text="1,254">
+                  <Label fx:id="eventCount" prefHeight="30.0" prefWidth="195.0" text="1,254">
                      <VBox.margin>
                         <Insets left="15.0" />
                      </VBox.margin>
