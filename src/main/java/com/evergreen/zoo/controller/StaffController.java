@@ -77,7 +77,6 @@ public class StaffController implements Initializable {
 
     @FXML
     void refreshTable() throws SQLException {
-
         staffTable.getItems().clear();
         ArrayList<StaffDto> allStaff = model.getAllStaff();
         ObservableList<StaffDto> staffTMS = FXCollections.observableArrayList();

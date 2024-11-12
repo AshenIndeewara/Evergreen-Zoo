@@ -9,6 +9,7 @@ public class CheckRegex {
             case "password" -> "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
             case "username" -> "^[a-zA-Z0-9]*$";
             case "phone" -> "^[0-9]{10}$";
+            //case "price"
             default -> "";
         };
     }

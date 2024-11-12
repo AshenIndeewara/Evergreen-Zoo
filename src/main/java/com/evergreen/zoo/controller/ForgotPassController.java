@@ -2,8 +2,9 @@ package com.evergreen.zoo.controller;
 
 import com.evergreen.zoo.dto.ForgotDto;
 import com.evergreen.zoo.model.ForgotModel;
+import com.evergreen.zoo.util.SendEmail;
+import com.evergreen.zoo.util.SendSMS;
 import com.evergreen.zoo.util.ShowNotification;
-import com.evergreen.zoo.otpSend.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
@@ -76,7 +77,7 @@ public class ForgotPassController {
             System.out.println(forgotDto.toString());
             System.out.println("Otp eka send kala");
 
-            //SendEmail.sendEmail(forgotDto.getEmail(), String.valueOf(forgotDto.getOTP()));
+            SendEmail.sendEmail(forgotDto.getEmail(), String.valueOf(forgotDto.getOTP()));
             new ShowNotification("OTP Sent Successfully!",
                     "An OTP has been sent to your registered email.\n Please check your messages and enter the code to proceed.",
                     "success.png",
@@ -168,7 +169,7 @@ public class ForgotPassController {
             //TODO : passwords encrypt karannooo
 
             mainpane.getChildren().clear();
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/login/forgotPass.fxml"));
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/login/loginPane.fxml"));
             mainpane.getChildren().add(pane);
 
         }else{

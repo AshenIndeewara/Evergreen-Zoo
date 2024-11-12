@@ -14,7 +14,6 @@ module com.evergreen.zoo {
 
     opens com.evergreen.zoo.controller to javafx.fxml;
     opens com.evergreen.zoo.dto to javafx.base;
-    opens com.evergreen.zoo.otpSend to javafx.base;
     opens com.evergreen.zoo.dto.tanleDto to javafx.base;
 
     exports com.evergreen.zoo;

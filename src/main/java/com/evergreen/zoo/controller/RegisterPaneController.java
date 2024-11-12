@@ -5,7 +5,7 @@ import java.net.URL;
 import com.evergreen.zoo.dto.RegisterDto;
 import com.evergreen.zoo.model.RegisterModel;
 import com.evergreen.zoo.util.ShowNotification;
-import com.evergreen.zoo.otpSend.SendEmail;
+import com.evergreen.zoo.util.SendEmail;
 import com.evergreen.zoo.util.CheckRegex;
 import com.evergreen.zoo.util.UserIDQrEncryption;
 import com.jfoenix.controls.JFXButton;

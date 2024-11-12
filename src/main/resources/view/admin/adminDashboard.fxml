@@ -78,6 +78,21 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#callSupplier" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="67.0" prefWidth="356.0" style="-fx-background-color: #1e293c;" text="   Supplier" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" smooth="false">
+                                 <image>
+                                    <Image url="@../../asserts/icon/supplier.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
                         <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#callStocks" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="67.0" prefWidth="356.0" style="-fx-background-color: #1e293c;" text="   Stocks" textFill="WHITE">
                            <font>
                               <Font size="25.0" />

@@ -1,4 +1,4 @@
-package com.evergreen.zoo.otpSend;
+package com.evergreen.zoo.util;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

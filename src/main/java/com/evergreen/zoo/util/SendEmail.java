@@ -1,5 +1,4 @@
-package com.evergreen.zoo.otpSend;
-import com.evergreen.zoo.controller.QrController;
+package com.evergreen.zoo.util;
 import com.resend.*;
 import com.resend.core.exception.ResendException;
 import com.resend.services.emails.model.Attachment;

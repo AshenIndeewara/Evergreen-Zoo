@@ -78,6 +78,16 @@ CREATE TABLE IF NOT EXISTS `supplier` (
         `description` VARCHAR(255) NOT NULL,
         PRIMARY KEY (`supplierID`)
     );
+INSERT INTO `supplier` (`name`, `contact`, `email`, `address`, `description`) VALUES
+    ('Tropical Foods Ltd.', '0771234567', 'info@tropicalfoodslk.com', 'Colombo 03, Sri Lanka', 'Supplier of tropical fruits and vegetables'),
+    ('Oceanic Seafood Supplies', '0712345678', 'sales@oceanicseafoods.lk', 'Negombo, Sri Lanka', 'Specializes in fresh seafood supply'),
+    ('Green Pastures Hay Co.', '0763456789', 'contact@greenpastures.lk', 'Kandy, Sri Lanka', 'Hay and grass supplier for herbivores'),
+    ('Bug House Lanka', '0778765432', 'insects@bughouselk.com', 'Galle, Sri Lanka', 'Supplier of live insects and small animals'),
+    ('Lion Meat Suppliers', '0789876543', 'order@lionmeatsupplies.lk', 'Kurunegala, Sri Lanka', 'High-quality meat for carnivorous animals'),
+    ('Birdy Supplies', '0752345678', 'contact@birdysupplies.lk', 'Matara, Sri Lanka', 'Bird seeds and grains supplier'),
+    ('Leaf & Bark Exports', '0728765432', 'info@leafandbark.lk', 'Nuwara Eliya, Sri Lanka', 'Supplies eucalyptus leaves and other specialty foliage');
+
+
 
 CREATE TABLE IF NOT EXISTS `food` (
     `foodId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -88,6 +98,20 @@ CREATE TABLE IF NOT EXISTS `food` (
     `QtyOnHand` INT NOT NULL,
     FOREIGN KEY (`supplierId`) REFERENCES `supplier`(`supplierID`),
 );
+
+INSERT INTO `food` (`name`, `supplierId`, `price`, `minQTY`, `QtyOnHand`)
+VALUES
+    ('Bananas', 1, 1.50, 50, 100),
+    ('Fish', 2, 2.75, 30, 80),
+    ('Hay', 3, 0.60, 200, 500),
+    ('Carrots', 1, 0.45, 100, 150),
+    ('Insects', 4, 5.00, 20, 40),
+    ('Meat', 5, 7.50, 25, 60),
+    ('Fruits Mix', 1, 3.00, 75, 120),
+    ('Vegetables Mix', 3, 2.25, 50, 90),
+    ('Bird Seed', 6, 1.20, 40, 85),
+    ('Eucalyptus Leaves', 7, 4.00, 15, 35);
+
 CREATE TABLE IF NOT EXISTS `healthRecords` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `Description` VARCHAR(255) NOT NULL,

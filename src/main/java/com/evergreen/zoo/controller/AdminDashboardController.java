@@ -142,7 +142,15 @@ public class AdminDashboardController implements Initializable {
     }
 
     @FXML
-    void callStocks(ActionEvent event) {
+    void callStocks(ActionEvent event) throws IOException {
         titalLable.setText("Stock Management");
+        callPane("stockManage.fxml");
+    }
+
+    @FXML
+    void callSupplier(ActionEvent event) throws IOException {
+        titalLable.setText("Supplier Management");
+        callPane("supplierPane.fxml");
+
     }
 }

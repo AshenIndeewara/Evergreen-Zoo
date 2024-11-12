@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="972.0" prefWidth="1587.0" style="-fx-background-color: #f0f4e8;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evergreen.zoo.controller.StockManageController">
+   <children>
+      <AnchorPane layoutX="29.0" layoutY="21.0" prefHeight="916.0" prefWidth="1535.0" style="-fx-background-color: white; -fx-background-radius: 20;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <AnchorPane layoutX="28.0" layoutY="28.0" prefHeight="868.0" prefWidth="809.0" style="-fx-border-color: black; -fx-border-radius: 20;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="27.0">
+               <children>
+                  <TableView fx:id="itemTable" layoutX="47.0" layoutY="47.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../asserts/style/table.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="item" prefWidth="252.0" text="Item" />
+                      <TableColumn fx:id="qty" prefWidth="170.0" text="Quantity" />
+                        <TableColumn fx:id="typeImage" prefWidth="150.0" text="Type" />
+                        <TableColumn fx:id="supplier" prefWidth="232.0" text="Supplier" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="906.0" layoutY="45.0" prefHeight="215.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-radius: 20;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="850.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="27.0">
+               <children>
+                  <VBox layoutX="26.0" layoutY="38.0" prefHeight="375.0" prefWidth="612.0" style="-fx-border-color: black; -fx-border-radius: 20;" AnchorPane.bottomAnchor="458.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="37.0">
+                     <children>
+                        <Label prefHeight="41.0" prefWidth="309.0" text="Update Stock">
+                           <font>
+                              <Font name="Cascadia Code Regular" size="30.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="39.0" prefWidth="163.0" text="Food Item">
+                           <font>
+                              <Font name="SansSerif Regular" size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ComboBox fx:id="itemList" prefHeight="36.0" prefWidth="619.0">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </VBox.margin>
+                        </ComboBox>
+                        <Label prefHeight="39.0" prefWidth="163.0" text="Quantity">
+                           <font>
+                              <Font name="SansSerif Regular" size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="qtyTxt" onKeyReleased="#qtyRegex" prefHeight="36.0" prefWidth="620.0">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label prefHeight="39.0" prefWidth="163.0" text="Movement Type">
+                           <font>
+                              <Font name="SansSerif Regular" size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ComboBox fx:id="movement" prefHeight="36.0" prefWidth="619.0">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </VBox.margin>
+                        </ComboBox>
+                        <JFXButton onAction="#isUpdateStock" prefHeight="38.0" prefWidth="128.0" style="-fx-background-color: gray;" text="Update Stock" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets left="250.0" top="20.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+                  <AnchorPane layoutX="30.0" layoutY="442.0" prefHeight="418.0" prefWidth="609.0" style="-fx-border-color: black; -fx-border-radius: 20;" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="441.0">
+                     <children>
+                        <VBox layoutX="4.0" layoutY="4.0" prefHeight="411.0" prefWidth="603.0" AnchorPane.bottomAnchor="-9.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0">
+                           <children>
+                              <Label prefHeight="41.0" prefWidth="309.0" text="Add New Item">
+                                 <font>
+                                    <Font name="Cascadia Code Regular" size="30.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label prefHeight="39.0" prefWidth="163.0" text="Food Item">
+                                 <font>
+                                    <Font name="SansSerif Regular" size="20.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="itemName" prefHeight="36.0" prefWidth="620.0">
+                                 <VBox.margin>
+                                    <Insets left="10.0" right="10.0" top="2.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Label prefHeight="39.0" prefWidth="163.0" text="Supplier Name">
+                                 <font>
+                                    <Font name="SansSerif Regular" size="20.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <ComboBox fx:id="supplierName" prefHeight="36.0" prefWidth="578.0">
+                                 <VBox.margin>
+                                    <Insets left="10.0" right="10.0" top="2.0" />
+                                 </VBox.margin>
+                              </ComboBox>
+                              <Label prefHeight="39.0" prefWidth="163.0" text="Price">
+                                 <font>
+                                    <Font name="SansSerif Regular" size="20.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="price" onKeyReleased="#checkNumberRegex3" prefHeight="36.0" prefWidth="620.0">
+                                 <VBox.margin>
+                                    <Insets left="10.0" right="10.0" top="2.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <GridPane>
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label prefHeight="39.0" prefWidth="163.0" text="Start Stock (Kg)">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="newQTY" onKeyReleased="#checkNumberRegex2" prefHeight="30.0" prefWidth="233.0" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Label prefHeight="30.0" prefWidth="207.0" text="Minimum Stock (Kg)" GridPane.columnIndex="1">
+                                       <font>
+                                          <Font name="SansSerif Regular" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="minQTY" onKeyReleased="#checkNumberRegex1" prefHeight="36.0" prefWidth="620.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <GridPane.margin>
+                                          <Insets right="10.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </GridPane>
+                              <JFXButton onAction="#addNewItem" prefHeight="38.0" prefWidth="128.0" style="-fx-background-color: gray;" text="Add new Item" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="250.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
