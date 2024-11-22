@@ -133,9 +133,7 @@ public class TicketPaneController implements Initializable {
 
     public void setRole(int role) {
         this.role = role;
-        if(role == 4){
-            changePricePane.setVisible(false);
-        }
+        System.out.println("Role set to: " + role);
     }
 
     double getTotalPrice() {
@@ -150,6 +148,9 @@ public class TicketPaneController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        if(role==4){
+            changePricePane.setVisible(true);
+        }
         totalLabel.setText("0");
         loadPayments();
         try {
@@ -309,11 +310,6 @@ public class TicketPaneController implements Initializable {
     @FXML
     void completePurchase(ActionEvent event) {
         try {
-            if (!validateInputs()) {
-                new Alert(Alert.AlertType.ERROR, "Please fill all fields correctly.").showAndWait();
-                return;
-            }
-
             ticketDto = new TicketDto(
                     getTotalPrice(),
                     paymentOptions.getValue(),
@@ -328,17 +324,43 @@ public class TicketPaneController implements Initializable {
             );
 
             ticketModel.addTicket(ticketDto);
+            Connection connection = DBConnection.getInstance().getConnection();
 
-            generateReport();
-            new ShowNotification("Ticket Purchased",
-                    "Ticket purchased successfully",
-                    "success.png",
-                    ""
-            ).start();
-            ClearFields(event);
+//            Map<String, Object> parameters = new HashMap<>();
+//            today - 2024 - 02 - 02
+//            TODAY -
 
-        } catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR, "An error occurred during purchase: " + e.getMessage()).showAndWait();
+//            parameters.put("today",LocalDate.now().toString());
+//            <key , value>
+//            Initialize a map to hold the report parameters
+//            These parameters can be used inside the report (like displaying today's date)
+
+            // Initialize a map to hold the report parameters
+            // These parameters can be used inside the report (like displaying today's date)
+            Map<String, Object> parameters = new HashMap<>();
+
+            // Put the current date into the map with two different keys ("today" and "TODAY")
+            // You can refer to these keys in the Jasper report if needed
+            parameters.put("today", LocalDate.now().toString());
+            parameters.put("TODAY", LocalDate.now().toString());
+
+
+            JasperReport jasperReport = JasperCompileManager.compileReport(getClass().getResourceAsStream("/report/Blank_A4.jrxml"));
+
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(
+                    jasperReport,
+                    parameters,
+                    connection
+            );
+
+            JasperViewer.viewReport(jasperPrint, false);
+        } catch (JRException e) {
+            new Alert(Alert.AlertType.ERROR, "Fail to load report..!");
+            e.printStackTrace();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "Data empty..!");
+            e.printStackTrace();
         }
     }
 

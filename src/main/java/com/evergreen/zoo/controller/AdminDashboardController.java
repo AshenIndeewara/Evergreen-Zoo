@@ -206,12 +206,6 @@ public class AdminDashboardController implements Initializable {
         callPane("reportPane.fxml");
     }
 
-    @FXML
-    void callSettings(ActionEvent event) {
-        titalLable.setText("Settings");
-
-    }
-
     void callPane(String path) throws IOException {
         String fullPath = "/view/"+path;
         AnchorPane newPane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/" + path)));

@@ -147,15 +147,6 @@ public class LoginPaneController implements Initializable {
             ).start();
 
             loadDashboards(resultSet.getInt(4), event);
-//            if (resultSet.getInt(4)==1) {
-//                loadWindow("admin/adminDashboard.fxml", true, 1);
-//            } else if (resultSet.getInt(4)==2) {
-//                //TODO : make dashboards
-//            } else if (resultSet.getInt(4)==3) {
-//                //TODO : make dashboards
-//            } else if (resultSet.getInt(4)==4) {
-//                //TODO : make dashboards
-//            }
         }
     }
 
@@ -166,12 +157,13 @@ public class LoginPaneController implements Initializable {
         } else if (role == 2) {
             closeWindow(event);
             loadWindow("admin/adminDashboard.fxml", true, 2);
-            //TODO : make dashboards
         } else if (role == 3) {
             closeWindow(event);
+            loadWindow("admin/adminDashboard.fxml", true, 3);
             //TODO : make dashboards
         } else if (role == 4) {
             closeWindow(event);
+            loadWindow("admin/adminDashboard.fxml", true, 4);
             //TODO : make dashboards
         }else{
             System.out.println("Invalid role");
