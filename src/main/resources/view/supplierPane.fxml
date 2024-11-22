@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="972.0" prefWidth="1587.0" style="-fx-background-color: #f0f4e8;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evergreen.zoo.controller.SupplierController">
    <children>
       <AnchorPane layoutX="365.0" layoutY="253.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 20;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
@@ -26,7 +25,7 @@
                       <TableColumn fx:id="supName" prefWidth="202.75" text="Name" />
                       <TableColumn fx:id="supEmail" prefWidth="202.75" text="Contact" />
                         <TableColumn fx:id="supPhone" prefWidth="202.75" text="Phone" />
-                        <TableColumn fx:id="supAction" prefWidth="202.75" text="Actions" />
+                        <TableColumn fx:id="supAction" prefWidth="202.75" text="Aescription" />
                     </columns>
                   </TableView>
                </children>
@@ -54,7 +53,7 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="supNameTXT" prefHeight="45.0" prefWidth="670.0">
+                        <TextField fx:id="supNameTXT" onKeyReleased="#nameRegex" prefHeight="45.0" prefWidth="670.0">
                            <VBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
@@ -73,7 +72,7 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="supEmailTXT" prefHeight="45.0">
+                        <TextField fx:id="supEmailTXT" onKeyReleased="#emailRegex" prefHeight="45.0">
                            <VBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
@@ -92,7 +91,7 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="supNumberTXT" prefHeight="45.0">
+                        <TextField fx:id="supNumberTXT" onKeyReleased="#numberRegex" prefHeight="45.0">
                            <VBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
@@ -149,7 +148,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <JFXButton onAction="#addSupplier" prefHeight="50.0" prefWidth="196.0" style="-fx-background-color: #4a6741;" text="Add New Supplier" textFill="WHITE" GridPane.rowIndex="1">
+                              <JFXButton fx:id="addBtn" onAction="#addSupplier" prefHeight="50.0" prefWidth="196.0" style="-fx-background-color: #4a6741;" text="Add New Supplier" textFill="WHITE" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
@@ -165,7 +164,7 @@
                                     <Insets left="70.0" />
                                  </GridPane.margin>
                               </JFXButton>
-                              <JFXButton onAction="#updateSupplier" prefHeight="50.0" prefWidth="196.0" style="-fx-background-color: #4a6741;" text="Update Supplier" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <JFXButton fx:id="updateBtn" disable="true" onAction="#updateSupplier" prefHeight="50.0" prefWidth="196.0" style="-fx-background-color: #4a6741;" text="Update Supplier" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="17.0" />
                                  </font>
@@ -173,7 +172,7 @@
                                     <Insets left="70.0" />
                                  </GridPane.margin>
                               </JFXButton>
-                              <JFXButton onAction="#deleteSupplier" prefHeight="50.0" prefWidth="196.0" style="-fx-background-color: red;" text="Delete Supplier" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              <JFXButton fx:id="deleteBtn" disable="true" onAction="#deleteSupplier" prefHeight="50.0" prefWidth="196.0" style="-fx-background-color: red;" text="Delete Supplier" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <font>
                                     <Font size="17.0" />
                                  </font>

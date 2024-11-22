@@ -1,0 +1,79 @@
+<!-- Created with Jaspersoft Studio version 7.0.0.final using JasperReports Library version 7.0.0-b478feaa9aab4375eba71de77b4ca138ad2f62aa  -->
+<jasperReport name="fucking ticket" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8532e25e-6a0d-4f74-aeae-f425dc8dfced">
+	<property name="com.jaspersoft.studio.data.sql.tables" value="YHZpc2l0b3JEZXRhaWxzYCAsODksMTUsNTIwZjc1YmQtN2I0NC00NmYzLWJhZGQtM2EwYTJkZjNh&#xa;OTFmO3RpY2tldCAsMTUsNjUsMmQ4ZTRhZDEtNjE2YS00YTY0LWFhYzgtODE5NmI5MmU3MTIxO3Zp&#xa;c2l0b3IgLDIxMyw2NSw5ZjI3NmVkOC1lYTllLTQ3YTQtYTE0ZS01ZDJhN2I1ZTIyY2I7"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="TicketDBConnection"/>
+	<query language="SQL"><![CDATA[SELECT
+    vd.visitorID AS visitorID,
+    v.name AS visitorName,
+    v.email AS visitorEmail,
+    v.number AS visitorPhone,
+    t.ticketType AS ticketName,
+    t.price AS ticketPrice,
+    vd.qty AS ticketQuantity,
+    (t.price * vd.qty) AS totalPrice,
+    (SELECT SUM(t2.price * vd2.qty)
+     FROM visitorDetails vd2
+     JOIN ticket t2 ON vd2.ticketID = t2.ticketID
+     WHERE vd2.visitorID = vd.visitorID) AS fullTotal
+FROM
+    visitorDetails vd
+JOIN
+    visitor v ON vd.visitorID = v.visitorID
+JOIN
+    ticket t ON vd.ticketID = t.ticketID
+WHERE
+    vd.visitorID = (SELECT MAX(visitorID) FROM visitor)]]></query>
+	<field name="visitorID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="visitorID"/>
+		<property name="com.jaspersoft.studio.field.label" value="visitorID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visitordetails"/>
+	</field>
+	<field name="visitorName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="visitorName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visitor"/>
+	</field>
+	<field name="visitorEmail" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="email"/>
+		<property name="com.jaspersoft.studio.field.label" value="visitorEmail"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visitor"/>
+	</field>
+	<field name="visitorPhone" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="number"/>
+		<property name="com.jaspersoft.studio.field.label" value="visitorPhone"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visitor"/>
+	</field>
+	<field name="ticketName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ticketType"/>
+		<property name="com.jaspersoft.studio.field.label" value="ticketName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ticket"/>
+	</field>
+	<field name="ticketPrice" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="price"/>
+		<property name="com.jaspersoft.studio.field.label" value="ticketPrice"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ticket"/>
+	</field>
+	<field name="ticketQuantity" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="qty"/>
+		<property name="com.jaspersoft.studio.field.label" value="ticketQuantity"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="visitordetails"/>
+	</field>
+	<field name="totalPrice" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="totalPrice"/>
+		<property name="com.jaspersoft.studio.field.label" value="totalPrice"/>
+	</field>
+	<field name="fullTotal" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="fullTotal"/>
+		<property name="com.jaspersoft.studio.field.label" value="fullTotal"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="79" splitType="Stretch"/>
+	<pageHeader height="35" splitType="Stretch"/>
+	<columnHeader height="61" splitType="Stretch"/>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>

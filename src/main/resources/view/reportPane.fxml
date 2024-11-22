@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="972.0" prefWidth="1587.0" style="-fx-background-color: #f0f4e8;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evergreen.zoo.controller.ReportController">
+   <children>
+      <AnchorPane layoutX="541.0" layoutY="107.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20; -fx-background-color: white;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <children>
+            <Label alignment="CENTER" layoutX="605.0" layoutY="47.0" prefHeight="69.0" prefWidth="314.0" text="Report Generator">
+               <font>
+                  <Font name="Cascadia Code Regular" size="30.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="29.0" layoutY="128.0" prefHeight="250.0" prefWidth="1499.0" style="-fx-border-color: black; -fx-border-radius: 20;" AnchorPane.bottomAnchor="555.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="127.0">
+               <children>
+                  <VBox layoutX="2.0" layoutY="2.0" prefHeight="250.0" prefWidth="1174.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
+                     <children>
+                        <GridPane prefHeight="104.0" prefWidth="736.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <JFXButton onAction="#getJReport" prefHeight="50.0" prefWidth="183.0" style="-fx-background-color: gray;" text="Generate Report" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="SansSerif Regular" size="15.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets left="130.0" />
+                                 </GridPane.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="29.0" fitWidth="30.0" pickOnBounds="true">
+                                       <image>
+                                          <Image url="@../asserts/icon/file.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <Label prefHeight="25.0" prefWidth="169.0" text="Report Type">
+                                 <font>
+                                    <Font name="SansSerif Regular" size="20.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <ComboBox fx:id="reportType" onAction="#getReportData" prefHeight="38.0" prefWidth="393.0" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </ComboBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="50.0" />
+                           </VBox.margin>
+                        </GridPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="tablePane" layoutX="22.0" layoutY="390.0" prefHeight="522.0" prefWidth="1505.0" style="-fx-border-color: black; -fx-border-radius: 20;" visible="false" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="389.0">
+               <children>
+                  <TableView fx:id="salesTable" layoutX="99.0" layoutY="3.0" prefHeight="548.0" prefWidth="642.0" stylesheets="@../asserts/style/table.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn fx:id="tID" prefWidth="154.33333587646484" text="Ticket ID" />
+                        <TableColumn fx:id="tType" prefWidth="547.0" text="Ticket Type" />
+                        <TableColumn fx:id="tPrice" prefWidth="248.6666259765625" text="Price" />
+                        <TableColumn fx:id="tQTY" prefWidth="300.6666259765625" text="QTY" />
+                        <TableColumn fx:id="tTotal" prefWidth="255.3333740234375" text="Total" />
+                     </columns>
+                  </TableView>
+                  <TableView fx:id="customerDataTable" layoutX="109.0" layoutY="13.0" prefHeight="548.0" prefWidth="642.0" stylesheets="@../asserts/style/table.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn fx:id="Cid" prefWidth="154.33333587646484" text="ID" />
+                        <TableColumn fx:id="cName" prefWidth="334.33331298828125" text="Name" />
+                        <TableColumn fx:id="cEmail" prefWidth="337.66668701171875" text="Email" />
+                        <TableColumn fx:id="cPhone" prefWidth="315.6666259765625" text="Phone" />
+                        <TableColumn fx:id="cDate" prefWidth="361.3333740234375" text="Date" />
+                     </columns>
+                  </TableView>
+                  <TableView fx:id="animalData" layoutX="109.0" layoutY="13.0" prefHeight="548.0" prefWidth="642.0" stylesheets="@../asserts/style/table.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn fx:id="aID" prefWidth="154.33333587646484" text="Animal ID" />
+                        <TableColumn fx:id="aName" prefWidth="385.66668701171875" text="Name" />
+                        <TableColumn fx:id="aSpecies" prefWidth="410.33331298828125" text="Species" />
+                        <TableColumn fx:id="aDiet" prefWidth="300.6666259765625" text="Diet" />
+                        <TableColumn fx:id="aAge" prefWidth="255.3333740234375" text="Age" />
+                     </columns>
+                  </TableView>
+                  <TableView fx:id="employeeData" layoutX="119.0" layoutY="23.0" prefHeight="548.0" prefWidth="642.0" stylesheets="@../asserts/style/table.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn fx:id="eID" prefWidth="154.33333587646484" text="Employee ID" />
+                        <TableColumn fx:id="eName" prefWidth="292.6666564941406" text="Name" />
+                        <TableColumn fx:id="eRole" prefWidth="315.66668701171875" text="Role" />
+                        <TableColumn fx:id="eContact" prefWidth="218.0" text="Contact" />
+                        <TableColumn fx:id="eEmail" prefWidth="270.666748046875" text="Email" />
+                        <TableColumn fx:id="eAddress" prefWidth="247.0" text="Address" />
+                     </columns>
+                  </TableView>
+                  <TableView fx:id="supplierData" layoutX="129.0" layoutY="33.0" prefHeight="548.0" prefWidth="642.0" stylesheets="@../asserts/style/table.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn fx:id="sID" prefWidth="154.33333587646484" text="Supplier ID" />
+                        <TableColumn fx:id="sName" prefWidth="256.66668701171875" text="Name" />
+                        <TableColumn fx:id="sPhone" prefWidth="212.0" text="Phone" />
+                        <TableColumn fx:id="sEmail" prefWidth="280.66668701171875" text="Email" />
+                        <TableColumn fx:id="sAddress" prefWidth="227.33331298828125" text="Address" />
+                        <TableColumn fx:id="sDescription" prefWidth="364.333251953125" text="Description" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

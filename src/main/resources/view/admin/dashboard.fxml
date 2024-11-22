@@ -23,7 +23,6 @@
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -36,7 +35,7 @@
                         <Image url="@../../asserts/icon/animal_black.png" />
                      </image>
                      <VBox.margin>
-                        <Insets left="300.0" top="10.0" />
+                        <Insets left="450.0" top="10.0" />
                      </VBox.margin>
                   </ImageView>
                   <Label prefHeight="34.0" prefWidth="175.0" text="Total Animals">
@@ -64,7 +63,7 @@
                         <Image url="@../../asserts/icon/staff_black.png" />
                      </image>
                      <VBox.margin>
-                        <Insets left="300.0" top="10.0" />
+                        <Insets left="450.0" top="10.0" />
                      </VBox.margin>
                   </ImageView>
                   <Label prefHeight="34.0" prefWidth="175.0" text="Total Staff">
@@ -85,14 +84,14 @@
                   </Label>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;" GridPane.columnIndex="2">
+            <VBox fx:id="vboxVisitor" prefHeight="200.0" prefWidth="100.0" style="-fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;" GridPane.columnIndex="2">
                <children>
                   <ImageView fitHeight="35.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../asserts/icon/ticket.png" />
                      </image>
                      <VBox.margin>
-                        <Insets left="300.0" top="10.0" />
+                        <Insets left="450.0" top="10.0" />
                      </VBox.margin>
                   </ImageView>
                   <Label prefHeight="34.0" prefWidth="175.0" text="Total Visitors">
@@ -113,62 +112,33 @@
                   </Label>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;" GridPane.columnIndex="3">
-               <children>
-                  <ImageView fitHeight="35.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../asserts/icon/count.png" />
-                     </image>
-                     <VBox.margin>
-                        <Insets left="300.0" top="10.0" />
-                     </VBox.margin>
-                  </ImageView>
-                  <Label prefHeight="34.0" prefWidth="207.0" text="Upcoming Events">
-                     <font>
-                        <Font name="Segoe UI Semibold" size="23.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets left="15.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label fx:id="eventCount" prefHeight="30.0" prefWidth="195.0" text="1,254">
-                     <VBox.margin>
-                        <Insets left="15.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="Segoe UI Symbol" size="20.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
          </children>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </GridPane>
-      <AnchorPane layoutX="32.0" layoutY="209.0" prefHeight="406.0" prefWidth="807.0" style="-fx-border-color: black; -fx-border-radius: 20;" AnchorPane.topAnchor="170.0">
+      <AnchorPane layoutX="32.0" layoutY="209.0" prefHeight="782.0" prefWidth="807.0" style="-fx-border-color: black; -fx-border-radius: 20;" AnchorPane.topAnchor="170.0">
          <children>
-            <BarChart layoutX="-67.0" layoutY="2.0" prefHeight="404.0" prefWidth="1031.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
+            <BarChart fx:id="barChartTicket" layoutX="3.0" layoutY="4.0" prefHeight="755.0" prefWidth="802.0" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0">
+               <xAxis>
+                  <CategoryAxis fx:id="xAxis" label="Month" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis fx:id="yAxis" label="Quantity" />
+               </yAxis>
             </BarChart>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="857.0" layoutY="209.0" prefHeight="406.0" prefWidth="700.0" style="-fx-border-color: black; -fx-border-radius: 20;" AnchorPane.topAnchor="170.0">
+      <AnchorPane layoutX="857.0" layoutY="209.0" prefHeight="782.0" prefWidth="700.0" style="-fx-border-color: black; -fx-border-radius: 20;" AnchorPane.topAnchor="170.0">
          <children>
-            <TableView layoutY="32.0" prefHeight="367.0" prefWidth="489.0" stylesheets="@../../asserts/style/table.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TableView fx:id="animalTable" layoutY="32.0" prefHeight="367.0" prefWidth="489.0" stylesheets="@../../asserts/style/table.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn prefWidth="255.6666259765625" text="Species" />
-                <TableColumn prefWidth="194.3333740234375" text="Quantity" />
-                  <TableColumn prefWidth="242.3333740234375" text="Date Added" />
+                <TableColumn fx:id="tableSpecies" prefWidth="255.6666259765625" text="Species" />
+                <TableColumn fx:id="tableQTY" prefWidth="194.3333740234375" text="Quantity" />
+                  <TableColumn fx:id="tableStatus" prefWidth="242.3333740234375" text="Conservation Status" />
               </columns>
             </TableView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="33.0" layoutY="593.0" prefHeight="363.0" prefWidth="1528.0" style="-fx-border-color: black; -fx-border-radius: 20;" />
    </children>
 </AnchorPane>

@@ -15,4 +15,7 @@ public class TicketDto {
     private int foreigner;
     private int foreignerChild;
     private int student;
+    private String name;
+    private String email;
+    private String num;
 }

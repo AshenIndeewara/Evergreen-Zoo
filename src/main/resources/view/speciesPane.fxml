@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="972.0" prefWidth="1587.0" style="-fx-background-color: #f0f4e8;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.evergreen.zoo.controller.SpeciesController">
+   <children>
+      <AnchorPane layoutX="39.0" layoutY="31.0" prefHeight="916.0" prefWidth="1535.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+         <children>
+            <AnchorPane layoutX="28.0" layoutY="28.0" prefHeight="868.0" prefWidth="809.0" style="-fx-border-color: black; -fx-border-radius: 20;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="27.0">
+               <children>
+                  <TableView fx:id="itemTable" layoutX="2.0" layoutY="2.0" onMousePressed="#getAnimals" prefHeight="792.0" prefWidth="807.0" stylesheets="@../asserts/style/table.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn fx:id="speciesName" prefWidth="252.0" text="Name" />
+                        <TableColumn fx:id="speciesCount" prefWidth="170.0" text="Count" />
+                        <TableColumn fx:id="speciesDite" prefWidth="150.0" text="Dite" />
+                        <TableColumn fx:id="speciesStatus" prefWidth="232.0" text="ConservationStatus" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="906.0" layoutY="45.0" prefHeight="215.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-radius: 20;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="850.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="27.0">
+               <children>
+                  <VBox layoutX="4.0" layoutY="4.0" prefHeight="473.0" prefWidth="654.0" style="-fx-border-color: black; -fx-border-radius: 20;" AnchorPane.bottomAnchor="388.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0">
+                     <children>
+                        <Label prefHeight="41.0" prefWidth="309.0" text="Species Manage">
+                           <font>
+                              <Font name="Cascadia Code Regular" size="30.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label prefHeight="39.0" prefWidth="163.0" text="Species name">
+                           <font>
+                              <Font name="SansSerif Regular" size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="speciesTXT" prefHeight="49.0" prefWidth="619.0">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="25.0" top="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label prefHeight="39.0" prefWidth="234.0" text="ConservationStatus">
+                           <font>
+                              <Font name="SansSerif Regular" size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="statusTXT" prefHeight="48.0" prefWidth="619.0">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="25.0" top="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label prefHeight="39.0" prefWidth="163.0" text="Dite">
+                           <font>
+                              <Font name="SansSerif Regular" size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ComboBox fx:id="diteTXT" prefHeight="45.0" prefWidth="619.0">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                        </ComboBox>
+                        <JFXButton onAction="#addSpecies" prefHeight="44.0" prefWidth="153.0" style="-fx-background-color: green;" text="Add Species" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets left="250.0" top="20.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+                  <AnchorPane layoutX="2.0" layoutY="493.0" prefHeight="280.0" prefWidth="272.0" style="-fx-border-color: black; -fx-border-radius: 20;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="500.0">
+                     <children>
+                        <TableView fx:id="animalTable" layoutX="170.0" layoutY="81.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../asserts/style/table.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columns>
+                            <TableColumn fx:id="animalName" prefWidth="654.0" text="Animal Name" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

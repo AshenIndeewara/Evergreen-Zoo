@@ -53,4 +53,45 @@ public class StaffModel {
         }
         return staff;
     }
+
+    public Boolean deleteStaff(StaffDto staffDto) {
+        String sql = "delete from employee where phone=?, where email=?, where name=?";
+        try {
+            CrudUtil.execute(sql, staffDto.getStaffContact(), staffDto.getStaffEmail(), staffDto.getStaffName());
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public int getEmployeeId(StaffDto staffDto) {
+        String sql = "SELECT id FROM employee WHERE email = ? AND name = ? AND phone = ?";
+        try {
+            ResultSet resultSet = CrudUtil.execute(sql, staffDto.getStaffEmail(), staffDto.getStaffName(), staffDto.getStaffContact());
+            if (resultSet.next()) {
+                System.out.println(resultSet.getInt("id"));
+                return resultSet.getInt("id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    public boolean updateStaff(StaffDto staffDto, int userId) {
+        System.out.println(staffDto.toString());
+        String getROleId = "select role_id from role where description=?";
+        String sql = "update employee set name=?, position=?, phone=?, email=? where id=?";
+        try {
+            ResultSet resultSet = CrudUtil.execute(getROleId, staffDto.getStaffRole());
+            if (resultSet.next()) {
+                CrudUtil.execute(sql, staffDto.getStaffName(), resultSet.getInt("role_id"), staffDto.getStaffContact(), staffDto.getStaffEmail(), userId);
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

@@ -7,12 +7,9 @@ import com.evergreen.zoo.util.ShowNotification;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-import javafx.scene.control.ComboBox;
 import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
@@ -59,6 +56,12 @@ public class StockManageController implements Initializable {
 
     @FXML
     private TextField minQTY;
+
+    private int role;
+
+    public void setRole(int role) {
+        this.role = role;
+    }
 
     StockModel stockModel = new StockModel();
     Boolean isPriceValid = false;
@@ -120,8 +123,8 @@ public class StockManageController implements Initializable {
         }
         int qty = Integer.parseInt(qtyTxt.getText());
         if(qty > stockModel.getIteeQty(item)) {
-            new ShowNotification("Invalid input",
-                    "Please check the input fields",
+            new ShowNotification("Invalid quantity",
+                    "Please check the quantity",
                     "unsuccess.png",
                     "he he login notification eka click kala"
             ).start();
@@ -129,6 +132,8 @@ public class StockManageController implements Initializable {
         }
         stockModel.isUpdateStock(item, move, qty);
         getStock();
+        getItems();
+        clearUpdateFields();
     }
 
     @FXML
@@ -153,10 +158,45 @@ public class StockManageController implements Initializable {
                     "success.png",
                     "he he login notification eka click kala"
             ).start();
+            getItems();
             getStock();
+            clearAddFields();
         }else{
             new ShowNotification("Item added failed",
                     "Failed to add "+itemName+" to the stock",
+                    "unsuccess.png",
+                    "he he login notification eka click kala"
+            ).start();
+        }
+    }
+
+    @FXML
+    void deleteItem(ActionEvent event) {
+        StockDto item = itemTable.getSelectionModel().getSelectedItem();
+
+        if(item == null) {
+            new ShowNotification("Invalid input",
+                    "Please check the input fields",
+                    "unsuccess.png",
+                    "he he login notification eka click kala"
+            ).start();
+            return;
+        }
+        boolean yes = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete "+item.getItem()+" from the stock?").showAndWait().get() == ButtonType.OK;
+        if(!yes) {
+            return;
+        }
+        if(stockModel.isDeleteItem(item)) {
+            getStock();
+            new ShowNotification("Item deleted successfully",
+                    item+" deleted from the stock",
+                    "success.png",
+                    "he he login notification eka click kala"
+            ).start();
+            getItems();
+        }else{
+            new ShowNotification("Item delete failed",
+                    "Failed to delete "+item+" from the stock",
                     "unsuccess.png",
                     "he he login notification eka click kala"
             ).start();
@@ -203,6 +243,19 @@ public class StockManageController implements Initializable {
             qtyTxt.setStyle("-fx-text-fill: RED");
             isQtyValid = false;
         }
+    }
 
+    void clearUpdateFields() {
+        qtyTxt.clear();
+        itemList.getSelectionModel().clearSelection();
+        movement.getSelectionModel().clearSelection();
+    }
+
+    void clearAddFields() {
+        qtyTxt.clear();
+        itemName.clear();
+        newQTY.clear();
+        price.clear();
+        minQTY.clear();
     }
 }

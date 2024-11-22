@@ -4,14 +4,17 @@ import com.evergreen.zoo.dto.FoodDto;
 import com.evergreen.zoo.dto.tanleDto.SupplierDto;
 import com.evergreen.zoo.model.SupplierModel;
 import com.evergreen.zoo.util.ShowNotification;
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -47,18 +50,34 @@ public class SupplierController implements Initializable {
     @FXML
     private TableColumn<SupplierDto, String> supName;
 
+    @FXML
+    private JFXButton addBtn;
+
+    @FXML
+    private JFXButton deleteBtn;
+
+    @FXML
+    private JFXButton updateBtn;
+
     SupplierModel supplierModel = new SupplierModel();
+
+    private int role;
+
+    public void setRole(int role) {
+        this.role = role;
+    }
+
+    boolean nameRegex, emailRegex, numberRegex;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        supplier.setCellValueFactory(new PropertyValueFactory<>("supplier"));
-//        item.setCellValueFactory(new PropertyValueFactory<>("item"));
-//        qty.setCellValueFactory(new PropertyValueFactory<>("qty"));
-//        typeImage.setCellValueFactory(new PropertyValueFactory<>("typeImage"));
         supName.setCellValueFactory(new PropertyValueFactory<>("name"));
         supEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         supPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
         supAction.setCellValueFactory(new PropertyValueFactory<>("description"));
+        nameRegex = false;
+        emailRegex = false;
+        numberRegex = false;
         try {
             loadSuppliers();
         } catch (Exception e) {
@@ -109,6 +128,10 @@ public class SupplierController implements Initializable {
 
     @FXML
     void clearSupplier(ActionEvent event) {
+        updateBtn.setDisable(true);
+        deleteBtn.setDisable(true);
+        addBtn.setDisable(false);
+        loadSuppliers();
         supNameTXT.clear();
         supAddressTXT.clear();
         supEmailTXT.clear();
@@ -117,7 +140,7 @@ public class SupplierController implements Initializable {
     }
 
     @FXML
-    void deleteSupplier(ActionEvent event) {
+    void deleteSupplier(ActionEvent event) throws SQLException {
         SupplierDto supplierDto = supTable.getSelectionModel().getSelectedItem();
         ArrayList<FoodDto> items = supplierModel.getSupplierItems(supplierDto.getSupplierID());
         if(items.size() > 0){
@@ -154,6 +177,12 @@ public class SupplierController implements Initializable {
 
     @FXML
     void onClickTable(MouseEvent event) {
+        updateBtn.setDisable(false);
+        deleteBtn.setDisable(false);
+        addBtn.setDisable(true);
+        nameRegex = true;
+        emailRegex = true;
+        numberRegex = true;
         SupplierDto supplierDto = supTable.getSelectionModel().getSelectedItem();
         supNameTXT.setText(supplierDto.getName());
         supAddressTXT.setText(supplierDto.getAddress());
@@ -185,6 +214,39 @@ public class SupplierController implements Initializable {
                     "unsuccess.png",
                     "he he login notification eka click kala"
             ).start();
+        }
+    }
+
+    @FXML
+    void emailRegex(KeyEvent event) {
+        if(supEmailTXT.getText().matches("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")) {
+            supEmailTXT.setStyle("-fx-text-fill: green");
+            emailRegex = true;
+        } else {
+            supEmailTXT.setStyle("-fx-text-fill: black");
+            emailRegex = false;
+        }
+    }
+
+    @FXML
+    void nameRegex(KeyEvent event) {
+        if(supNameTXT.getText().matches("^[a-zA-Z\\s]*$")) {
+            supNameTXT.setStyle("; -fx-text-fill: green;");
+            nameRegex = true;
+        } else {
+            supNameTXT.setStyle("-fx-text-fill: black");
+            nameRegex = false;
+        }
+    }
+
+    @FXML
+    void numberRegex(KeyEvent event) {
+        if(supNumberTXT.getText().matches("^[0-9]*$")) {
+            supNumberTXT.setStyle("-fx-text-fill: green");
+            numberRegex = true;
+        } else {
+            supNumberTXT.setStyle("-fx-text-fill: black");
+            numberRegex = false;
         }
     }
 

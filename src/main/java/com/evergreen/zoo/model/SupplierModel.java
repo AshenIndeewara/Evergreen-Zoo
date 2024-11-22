@@ -1,10 +1,13 @@
 package com.evergreen.zoo.model;
 
+import com.evergreen.zoo.db.DBConnection;
 import com.evergreen.zoo.dto.FoodDto;
 import com.evergreen.zoo.dto.tanleDto.SupplierDto;
 import com.evergreen.zoo.util.CrudUtil;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SupplierModel {
@@ -69,18 +72,28 @@ public class SupplierModel {
         return items;
     }
 
-    public Boolean isDeleteSupplier(SupplierDto supplierDto, ArrayList<FoodDto> items) {
-        String sql = "DELETE FROM supplier WHERE name = ?";
+    public Boolean isDeleteSupplier(SupplierDto supplierDto, ArrayList<FoodDto> items) throws SQLException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        connection.setAutoCommit(false);
         try {
+            String sql = "DELETE FROM supplier WHERE name = ?";
             CrudUtil.execute(sql, supplierDto.getName());
             for (FoodDto item : items) {
-                sql = "DELETE FROM food WHERE name = ?";
-                CrudUtil.execute(sql, item.getName());
+                String sql1 = "DELETE FROM food WHERE supplierId = ?";
+                Boolean isFoodDelete =  CrudUtil.execute(sql1, item.getSupplier());
+                if (!isFoodDelete) {
+                    connection.rollback();
+                    return false;
+                }
             }
+            connection.commit();
             return true;
         } catch (Exception e) {
+            connection.rollback();
             e.printStackTrace();
             return false;
+        } finally {
+            connection.setAutoCommit(true);
         }
     }
 }

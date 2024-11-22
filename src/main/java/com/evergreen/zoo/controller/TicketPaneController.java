@@ -1,10 +1,9 @@
 package com.evergreen.zoo.controller;
 
+import com.evergreen.zoo.db.DBConnection;
 import com.evergreen.zoo.dto.TicketDto;
 import com.evergreen.zoo.model.TicketModel;
-import com.evergreen.zoo.util.CheckRegex;
 import com.evergreen.zoo.util.ShowNotification;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,9 +17,17 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
+
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.JasperViewer;
+
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class TicketPaneController implements Initializable {
@@ -68,6 +75,9 @@ public class TicketPaneController implements Initializable {
     private Label studentLabel;
 
     @FXML
+    private TextField nameTXT;
+
+    @FXML
     private Label studentLabel1;
 
     @FXML
@@ -100,6 +110,11 @@ public class TicketPaneController implements Initializable {
     @FXML
     private TextField fChildNewPrice;
 
+    @FXML
+    private TextField emailTXT;
+
+    @FXML
+    private TextField numTXT;
 
     private TicketModel ticketModel = new TicketModel();
     private HashMap<String, Integer> ticketPrice;
@@ -113,6 +128,15 @@ public class TicketPaneController implements Initializable {
     private double studentPrice = 0;
 
     private TicketDto ticketDto;
+
+    private int role;
+
+    public void setRole(int role) {
+        this.role = role;
+        if(role == 4){
+            changePricePane.setVisible(false);
+        }
+    }
 
     double getTotalPrice() {
         return adultPrice + childPrice + foreignChildPrice + foreignPrice + studentPrice;
@@ -159,6 +183,9 @@ public class TicketPaneController implements Initializable {
         studentCount.setText("0");
         foreignChildCount.setText("0");
         totalLabel.setText("0.0");
+        nameTXT.setText("");
+        emailTXT.setText("");
+        numTXT.setText("");
         adultPrice = 0;
         childPrice = 0;
         foreignChildPrice = 0;
@@ -281,25 +308,69 @@ public class TicketPaneController implements Initializable {
 
     @FXML
     void completePurchase(ActionEvent event) {
-        ticketDto = new TicketDto(
-                getTotalPrice(),
-                paymentOptions.getValue(),
-                Integer.parseInt(adultCount.getText()),
-                Integer.parseInt(childCount.getText()),
-                Integer.parseInt(foreignCount.getText()),
-                Integer.parseInt(foreignChildCount.getText()),
-                Integer.parseInt(studentCount.getText())
-        );
         try {
+            if (!validateInputs()) {
+                new Alert(Alert.AlertType.ERROR, "Please fill all fields correctly.").showAndWait();
+                return;
+            }
+
+            ticketDto = new TicketDto(
+                    getTotalPrice(),
+                    paymentOptions.getValue(),
+                    Integer.parseInt(adultCount.getText()),
+                    Integer.parseInt(childCount.getText()),
+                    Integer.parseInt(foreignCount.getText()),
+                    Integer.parseInt(foreignChildCount.getText()),
+                    Integer.parseInt(studentCount.getText()),
+                    nameTXT.getText(),
+                    emailTXT.getText(),
+                    numTXT.getText()
+            );
+
             ticketModel.addTicket(ticketDto);
+
+            generateReport();
             new ShowNotification("Ticket Purchased",
                     "Ticket purchased successfully",
                     "success.png",
                     ""
             ).start();
             ClearFields(event);
+
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            new Alert(Alert.AlertType.ERROR, "An error occurred during purchase: " + e.getMessage()).showAndWait();
+        }
+    }
+
+    private boolean validateInputs() {
+        // Check for empty or null fields
+        return !nameTXT.getText().isEmpty()
+                && !emailTXT.getText().isEmpty()
+                && !numTXT.getText().isEmpty()
+                && paymentOptions.getValue() != null;
+    }
+
+    private void generateReport() throws JRException, SQLException {
+        JasperReport jasperReport = JasperCompileManager.compileReport(
+                getClass().getResourceAsStream("/report/TestTicket.jrxml")
+        );
+
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("date", LocalDate.now().toString());
+
+        try (Connection connection = DBConnection.getInstance().getConnection()) {
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, connection);
+            JasperViewer.viewReport(jasperPrint, false);
+
+            if(connection.isClosed()){
+                System.out.println("Connection is closed");
+            }else{
+                String sql = "SELECT * FROM ticket WHERE ticketID = (SELECT MAX(ticketID) FROM ticket)";
+                ResultSet rs = DBConnection.getInstance().getConnection().createStatement().executeQuery(sql);
+                if(rs.next()){
+                    System.out.println("Ticket ID: " + rs.getInt(1));
+                }
+            }
         }
     }
 
@@ -349,5 +420,16 @@ public class TicketPaneController implements Initializable {
         changePricePane.setVisible(false);
         buttonGrid.setVisible(true);
         reloadNewPrice("main");
+    }
+
+    @FXML
+    void checkUser(KeyEvent event) {
+        if(numTXT.getLength() > 9){
+            try {
+                Map<String, String> user = ticketModel.getUser(numTXT.getText());
+                nameTXT.setText(user.get("name"));
+                emailTXT.setText(user.get("email"));
+            } catch (Exception e) {}
+        }
     }
 }

@@ -22,9 +22,9 @@
          <left>
             <AnchorPane prefHeight="1034.0" prefWidth="333.0" style="-fx-background-color: #1e293c;" BorderPane.alignment="CENTER">
                <children>
-                  <VBox layoutX="6.0" layoutY="34.0" prefHeight="518.0" prefWidth="180.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                  <VBox layoutX="6.0" layoutY="34.0" prefHeight="890.0" prefWidth="333.0" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                      <children>
-                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#callDashBoard" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="67.0" prefWidth="356.0" style="-fx-background-color: #1e293c;" text="   Dashboard" textFill="WHITE">
+                        <Button fx:id="dashboardBTN" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#callDashBoard" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="67.0" prefWidth="356.0" style="-fx-background-color: #1e293c;" text="   Dashboard" textFill="WHITE">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
@@ -42,7 +42,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#callStaff" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="67.0" prefWidth="356.0" style="-fx-background-color: #1e293c;" text="   Staff" textFill="WHITE">
+                        <Button fx:id="staffBTN" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#callStaff" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="67.0" prefWidth="356.0" style="-fx-background-color: #1e293c;" text="   Employee" textFill="WHITE">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -60,7 +60,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#callAnimals" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="67.0" prefWidth="356.0" style="-fx-background-color: #1e293c;" text="   Animals" textFill="WHITE">
+                        <Button fx:id="animalBTN" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#callAnimals" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="67.0" prefWidth="356.0" style="-fx-background-color: #1e293c;" text="   Animals" textFill="WHITE">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -78,7 +78,22 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#callSupplier" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="67.0" prefWidth="356.0" style="-fx-background-color: #1e293c;" text="   Supplier" textFill="WHITE">
+                        <Button fx:id="speciesBTN" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#callSpecies" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="67.0" prefWidth="356.0" style="-fx-background-color: #1e293c;" text="   Species" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" smooth="false">
+                                 <image>
+                                    <Image url="@../../asserts/icon/species.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="supplierBTN" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#callSupplier" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="67.0" prefWidth="356.0" style="-fx-background-color: #1e293c;" text="   Supplier" textFill="WHITE">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -93,7 +108,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#callStocks" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="67.0" prefWidth="356.0" style="-fx-background-color: #1e293c;" text="   Stocks" textFill="WHITE">
+                        <Button fx:id="stockBTN" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#callStocks" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="67.0" prefWidth="356.0" style="-fx-background-color: #1e293c;" text="   Stocks" textFill="WHITE">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -108,7 +123,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#callTicket" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="67.0" prefWidth="356.0" style="-fx-background-color: #1e293c;" text="   Ticket" textFill="WHITE">
+                        <Button fx:id="ticketBTN" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#callTicket" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="67.0" prefWidth="356.0" style="-fx-background-color: #1e293c;" text="   Ticket" textFill="WHITE">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -126,7 +141,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#callReports" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="67.0" prefWidth="356.0" style="-fx-background-color: #1e293c;" text="   Reports" textFill="WHITE">
+                        <Button fx:id="reportBTN" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#callReports" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="67.0" prefWidth="356.0" style="-fx-background-color: #1e293c;" text="   Reports" textFill="WHITE">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -141,25 +156,22 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#callSettings" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="67.0" prefWidth="356.0" style="-fx-background-color: #1e293c;" text="   Settings" textFill="WHITE">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" smooth="false">
-                                 <image>
-                                    <Image url="@../../asserts/icon/settings.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
                      </children></VBox>
+                  <Button alignment="BASELINE_LEFT" layoutY="900.0" mnemonicParsing="false" onAction="#callLogout" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="67.0" prefWidth="333.0" style="-fx-background-color: #1e293c;" text="   Logout" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" smooth="false">
+                           <image>
+                              <Image url="@../../asserts/icon/logout.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
             </AnchorPane>
          </left>
@@ -175,7 +187,7 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Label fx:id="titalLable" layoutX="487.0" layoutY="30.0" prefHeight="55.0" prefWidth="333.0" textFill="#101827">
+      <Label fx:id="titalLable" layoutX="487.0" layoutY="30.0" prefHeight="55.0" prefWidth="674.0" textFill="#101827">
          <font>
             <Font name="Cascadia Code Regular" size="30.0" />
          </font>

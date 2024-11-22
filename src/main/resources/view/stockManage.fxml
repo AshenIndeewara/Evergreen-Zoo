@@ -20,7 +20,7 @@
          <children>
             <AnchorPane layoutX="28.0" layoutY="28.0" prefHeight="868.0" prefWidth="809.0" style="-fx-border-color: black; -fx-border-radius: 20;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="27.0">
                <children>
-                  <TableView fx:id="itemTable" layoutX="47.0" layoutY="47.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../asserts/style/table.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="itemTable" layoutX="3.0" layoutY="3.0" prefHeight="792.0" prefWidth="805.0" stylesheets="@../asserts/style/table.css" AnchorPane.bottomAnchor="76.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                     <columns>
                       <TableColumn fx:id="item" prefWidth="252.0" text="Item" />
                       <TableColumn fx:id="qty" prefWidth="170.0" text="Quantity" />
@@ -28,6 +28,11 @@
                         <TableColumn fx:id="supplier" prefWidth="232.0" text="Supplier" />
                     </columns>
                   </TableView>
+                  <JFXButton layoutX="639.0" layoutY="810.0" onAction="#deleteItem" prefHeight="38.0" prefWidth="128.0" style="-fx-background-color: red;" text="Delete Item" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXButton>
                </children>
             </AnchorPane>
             <AnchorPane layoutX="906.0" layoutY="45.0" prefHeight="215.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-radius: 20;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="850.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="27.0">

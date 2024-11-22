@@ -27,16 +27,37 @@
         <list>
           <option value="zoo" />
           <option value="zoo" />
+          <option value="zoo" />
+          <option value="zoo" />
+          <option value="zoo" />
+          <option value="zoo" />
+          <option value="zoo" />
+          <option value="zoo" />
+          <option value="zoo" />
         </list>
       </option>
       <option name="ignoredPackages">
         <list>
           <option value="com.squareup.okio:okio-jvm:3.2.0" />
           <option value="com.squareup.okio:okio:3.2.0" />
+          <option value="commons-io:commons-io:2.11.0" />
+          <option value="com.fasterxml.woodstox:woodstox-core:6.2.3" />
+          <option value="org.bouncycastle:bcprov-jdk15on:1.70" />
+          <option value="com.fasterxml.jackson.core:jackson-databind:2.12.0" />
+          <option value="org.json:json:20210307" />
+          <option value="com.google.protobuf:protobuf-java:4.26.1" />
+          <option value="org.apache.ant:ant:1.7.1" />
         </list>
       </option>
       <option name="ignoredReasons">
         <list>
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
           <option value="Not exploitable" />
           <option value="Not exploitable" />
         </list>

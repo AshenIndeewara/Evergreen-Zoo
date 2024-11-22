@@ -12,7 +12,7 @@ public class SendEmail {
         Resend resend = new Resend(System.getenv("resendKey"));
 
         CreateEmailOptions params = CreateEmailOptions.builder()
-                .from("Evergreen <evergreen@sldatabase.ninja>")
+                .from("Evergreen <evergreen@punylk.me>")
                 .to(email)
                 .subject("Your, Evergreen OTP "+otp)
                 .html("<!DOCTYPE html>" +
@@ -175,7 +175,7 @@ public class SendEmail {
                 .build();
 
         CreateEmailOptions params = CreateEmailOptions.builder()
-                .from("Evergreen <evergreen@sldatabase.ninja>")
+                .from("Evergreen <evergreen@punylk.me>")
                 .to(email)
                 .subject("Login QR Code")
                 .attachments(att)

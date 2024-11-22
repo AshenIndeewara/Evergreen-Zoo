@@ -98,12 +98,16 @@ public class LoginPaneController implements Initializable {
         window.close();
     }
 
-    public void loadWindow(String path, boolean b) throws IOException {
+    public void loadWindow(String path, boolean b, int role) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/"+path));
         Parent root = loader.load();
         Stage windows = new Stage();
+
+        AdminDashboardController adminDashboardController = loader.getController();
+        adminDashboardController.setRole(role);
+
         if(b){
-            windows.initOwner(mainPane.getScene().getWindow());
+            //windows.initOwner(mainPane.getScene().getWindow());
             windows.setFullScreen(true);
             windows.setResizable(false);
 
@@ -144,7 +148,7 @@ public class LoginPaneController implements Initializable {
 
             loadDashboards(resultSet.getInt(4), event);
 //            if (resultSet.getInt(4)==1) {
-//                loadWindow("admin/adminDashboard.fxml", true);
+//                loadWindow("admin/adminDashboard.fxml", true, 1);
 //            } else if (resultSet.getInt(4)==2) {
 //                //TODO : make dashboards
 //            } else if (resultSet.getInt(4)==3) {
@@ -158,9 +162,10 @@ public class LoginPaneController implements Initializable {
     void loadDashboards(int role, ActionEvent event) throws IOException {
         if (role == 1) {
             closeWindow(event);
-            loadWindow("admin/adminDashboard.fxml", true);
+            loadWindow("admin/adminDashboard.fxml", true, 1);
         } else if (role == 2) {
             closeWindow(event);
+            loadWindow("admin/adminDashboard.fxml", true, 2);
             //TODO : make dashboards
         } else if (role == 3) {
             closeWindow(event);

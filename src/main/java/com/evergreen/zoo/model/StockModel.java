@@ -17,6 +17,7 @@ public class StockModel {
             ResultSet rs = CrudUtil.execute(sql);
             while (rs.next()) {
                 StockDto stockDto = new StockDto();
+                stockDto.setItemID(rs.getString(1));
                 String supplierId = rs.getString(3);
                 ResultSet rs2 = CrudUtil.execute(getSupplier, supplierId);
                 while (rs2.next()) {
@@ -25,12 +26,12 @@ public class StockModel {
                 stockDto.setItem(rs.getString(2));
                 stockDto.setQty(rs.getInt(6));
                 if(rs.getInt(6) > rs.getInt(5)) {
-                    ImageView upImageView = new ImageView(new Image("/up.png"));
+                    ImageView upImageView = new ImageView(new Image(getClass().getResourceAsStream("/asserts/images/up.png")));
                     upImageView.setFitWidth(20);
                     upImageView.setFitHeight(20);
                     stockDto.setTypeImage(upImageView);
                 } else {
-                    ImageView downImageView = new ImageView(new Image("/down.png"));
+                    ImageView downImageView = new ImageView(new Image(getClass().getResourceAsStream("/asserts/images/down.png")));
                     downImageView.setFitWidth(20);
                     downImageView.setFitHeight(20);
                     stockDto.setTypeImage(downImageView);
@@ -114,5 +115,17 @@ public class StockModel {
             e.printStackTrace();
         }
         return -1;
+    }
+
+    public boolean isDeleteItem(StockDto item) {
+        String sql = "DELETE FROM food WHERE foodId = ?";
+        System.out.println(item.toString());
+        try {
+            CrudUtil.execute(sql, item.getItemID());
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

@@ -39,17 +39,47 @@ CREATE TABLE IF NOT EXISTS `species` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `name` VARCHAR(255) NOT NULL,
         `ConservationStatus` VARCHAR(255) NOT NULL,
+        `foodId` INT NOT NULL,
         PRIMARY KEY (`id`)
+        FOREIGN KEY (`foodId`) REFERENCES `food`(`foodId`)
     );
+
+INSERT INTO `species` (`name`, `ConservationStatus`)
+VALUES
+    ('African Elephant', 'Vulnerable'),
+    ('Bengal Tiger', 'Endangered'),
+    ('Blue Whale', 'Endangered'),
+    ('California Condor', 'Critically Endangered'),
+    ('Giant Panda', 'Vulnerable'),
+    ('Green Sea Turtle', 'Endangered'),
+    ('Monarch Butterfly', 'Near Threatened'),
+    ('Polar Bear', 'Vulnerable'),
+    ('Snow Leopard', 'Vulnerable'),
+    ('Western Gorilla', 'Critically Endangered');
+
+
 CREATE TABLE IF NOT EXISTS `animal` (
         `animalId` INT NOT NULL AUTO_INCREMENT,
         `nickName` VARCHAR(255) NOT NULL,
         `speciesId` INT NOT NULL,
         `gender` VARCHAR(255) NOT NULL,
-        `arrivalDate` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        `age` INT NOT NULL,
         PRIMARY KEY (`animalId`),
         FOREIGN KEY (`speciesId`) REFERENCES `species`(`id`)
     );
+INSERT INTO `animal` (`nickName`, `speciesId`, `gender`, `age`)
+VALUES
+    ('Dumbo', 1, 'Male', 15),
+    ('Shere Khan', 2, 'Male', 8),
+    ('Bluey', 3, 'Female', 25),
+    ('Sky', 4, 'Female', 4),
+    ('Bamboo', 5, 'Male', 10),
+    ('Shelly', 6, 'Female', 50),
+    ('Flutters', 7, 'Female', 2),
+    ('Arctic', 8, 'Male', 12),
+    ('Snowy', 9, 'Female', 7),
+    ('Kong', 10, 'Male', 20);
+
 
 CREATE TABLE IF NOT EXISTS `feedingSchedule` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -57,16 +87,29 @@ CREATE TABLE IF NOT EXISTS `feedingSchedule` (
     `feedingTime` TIME NOT NULL,
     FOREIGN KEY (`speciesId`) REFERENCES `species`(`id`)
     );
+INSERT INTO `feedingSchedule` (`speciesId`, `feedingTime`)
+VALUES
+    (1, '08:00:00'),
+    (2, '09:30:00'),
+    (3, '07:00:00'),
+    (4, '06:45:00'),
+    (5, '10:00:00'),
+    (6, '11:15:00'),
+    (7, '12:30:00'),
+    (8, '13:45:00'),
+    (9, '15:00:00'),
+    (10, '14:30:00');
+
 
 CREATE TABLE IF NOT EXISTS `feedingDetails` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `scheduleId` INT NOT NULL,
-    `employeeId` INT NOT NULL,
+    `foodId` INT NOT NULL,
     `description` VARCHAR(255) NOT NULL,
     `qty` INT NOT NULL,
     `date` DATE NOT NULL,
     FOREIGN KEY (`scheduleId`) REFERENCES `feedingSchedule`(`id`),
-    FOREIGN KEY (`employeeId`) REFERENCES `employee`(`id`)
+    FOREIGN KEY (`foodId`) REFERENCES `food`(`foodId`)
     );
 
 CREATE TABLE IF NOT EXISTS `supplier` (
@@ -116,12 +159,24 @@ CREATE TABLE IF NOT EXISTS `healthRecords` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `Description` VARCHAR(255) NOT NULL,
         `date` DATE NOT NULL,
-        `employeeId` INT NOT NULL,
         `animalId` INT NOT NULL,
+        `type` VARCHAR(50) NOT NULL,
         PRIMARY KEY (`id`),
-        FOREIGN KEY (`employeeId`) REFERENCES `employee`(`id`),
         FOREIGN KEY (`animalId`) REFERENCES `animal`(`animalId`)
-);
+    );
+INSERT INTO `healthRecords` (`Description`, `date`, `animalId`)
+VALUES
+    ('Routine Checkup', '2024-01-15', 1),
+    ('Vaccination', '2024-02-10', 2),
+    ('Minor Injury Treated', '2024-03-05', 3),
+    ('Wing Examined', '2024-04-12', 4),
+    ('Diet Adjustment Consultation', '2024-05-20', 5),
+    ('Shell Cleaning', '2024-06-18', 6),
+    ('Migration Health Check', '2024-07-22', 7),
+    ('Fur Inspection', '2024-08-14', 8),
+    ('Claw Trimming', '2024-09-25', 9),
+    ('Dental Cleaning', '2024-10-30', 10);
+
 
 CREATE TABLE IF NOT EXISTS `ticket` (
         `ticketID` INT NOT NULL AUTO_INCREMENT,
@@ -138,16 +193,13 @@ INSERT INTO `ticket` (ticketType, price) VALUES
         ('Foreign', 1000.00),
         ('ForeignChild', 500.00);
 
-CREATE TABLE IF NOT EXISTS `visitor` (
-        `visitorID` INT NOT NULL AUTO_INCREMENT,
-        `total` DECIMAL(10, 2) NOT NULL,
-        `child` int NOT NULL,
-        `adult` int NOT NULL,
-        `foreigner` int NOT NULL,
-        `foreignerChild` int NOT NULL,
-        `student` int NOT NULL,
-        `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        PRIMARY KEY (`visitorID`)
+CREATE TABLE IF NOT EXISTS 'visitor' (
+        'visitorID' INT NOT NULL AUTO_INCREMENT,
+        'name' VARCHAR(255) NOT NULL,
+        'email' VARCHAR(255) NOT NULL,
+        'number' VARCHAR(255) NOT NULL,
+        'date' TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        PRIMARY KEY ('visitorID')
     );
 
 CREATE TABLE IF NOT EXISTS `eventPrograms` (
@@ -195,3 +247,13 @@ CREATE TABLE IF NOT EXISTS `employeeDetails` (
     FOREIGN KEY (`EMPLOYEE_ID`) REFERENCES `employee`(`id`),
     FOREIGN KEY (`eventID`) REFERENCES `eventPrograms`(`eventID`)
 )
+
+CREATE TABLE IF NOT EXISTS `visitorDetails` (
+        `orderID` INT NOT NULL AUTO_INCREMENT,
+        `visitorID` INT NOT NULL,
+        `ticketID` INT NOT NULL,
+        `qty` INT NOT NULL,
+        PRIMARY KEY (`orderID`),
+        FOREIGN KEY (`visitorID`) REFERENCES `visitor`(`visitorID`),
+        FOREIGN KEY (`ticketID`) REFERENCES `ticket`(`ticketID`)
+    );

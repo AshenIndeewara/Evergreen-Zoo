@@ -9,6 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 public class StockDto {
+    private String itemID;
     private String supplier;
     private String item;
     private int qty;

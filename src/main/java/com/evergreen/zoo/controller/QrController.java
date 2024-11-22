@@ -76,18 +76,18 @@ public class QrController {
                 JSONObject jsonObject = jsonArray.getJSONObject(0);
                 JSONArray symbolArray = jsonObject.getJSONArray("symbol");
                 JSONObject symbolObject = symbolArray.getJSONObject(0);
-                System.out.println("Symbol Object: " + symbolObject);
+                //System.out.println("Symbol Object: " + symbolObject);
                 try {
                     responseData = symbolObject.getString("data");
                 } catch (Exception e) {
-                    System.out.println("Error: " + symbolObject.getString("error"));
+                    //System.out.println("Error: " + symbolObject.getString("error"));
                 }
 
 
                 // Print the extracted data
                 System.out.println("Extracted Data: " + responseData);
             } else {
-                System.out.println("Failed to read QR Code. Response Code: " + responseCode);
+                //System.out.println("Failed to read QR Code. Response Code: " + responseCode);
             }
         } catch (IOException e) {
             e.printStackTrace();
